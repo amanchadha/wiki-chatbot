@@ -4,6 +4,9 @@ Usage:
     python cli.py "Who discovered the structure of DNA?"   # one-shot
     python cli.py                                          # interactive
     python cli.py --demo                                   # sample queries
+    python cli.py --cite "..."                             # citation mode:
+        inline superscript markers on retrieved-text claims + source list
+        (off by default; combines with any mode above)
 """
 
 import sys
@@ -22,9 +25,9 @@ DEMO_QUESTIONS = [
 ]
 
 
-def run_one(question: str) -> None:
+def run_one(question: str, cite: bool = False) -> None:
     print(f"\nQ: {question}")
-    result = answer(question)
+    result = answer(question, cite=cite)
     for i, (query, _) in enumerate(zip(result["queries"], result["tool_results"])):
         print(f"  [search {i + 1}] {query!r}")
     if not result["searched"]:
@@ -34,11 +37,13 @@ def run_one(question: str) -> None:
 
 def main() -> None:
     args = sys.argv[1:]
+    cite = "--cite" in args
+    args = [a for a in args if a != "--cite"]
     if args == ["--demo"]:
         for q in DEMO_QUESTIONS:
-            run_one(q)
+            run_one(q, cite=cite)
     elif args:
-        run_one(" ".join(args))
+        run_one(" ".join(args), cite=cite)
     else:
         print("Wiki chatbot — ask a question (Ctrl-D or 'quit' to exit)")
         while True:
@@ -48,7 +53,7 @@ def main() -> None:
                 break
             if not question or question.lower() in {"quit", "exit"}:
                 break
-            run_one(question)
+            run_one(question, cite=cite)
 
 
 if __name__ == "__main__":

@@ -5,7 +5,7 @@ should be a diff here (and only here). Keep a version label so eval runs
 can be tagged with the prompt they ran against.
 """
 
-PROMPT_VERSION = "v1.3-chain-verify-infobox"
+PROMPT_VERSION = "v1.4-citations"
 
 SYSTEM_PROMPT = """\
 You are a helpful assistant that answers questions, with access to Wikipedia \
@@ -54,6 +54,23 @@ If a question is unanswerable (unrecorded history, the future, private \
 information), say so plainly instead of guessing.
 
 Keep answers concise and directly responsive to the question."""
+
+# Appended to SYSTEM_PROMPT only when citation mode is on (--cite). The
+# default-mode prompt stays byte-identical to v1.3.
+CITATION_INSTRUCTIONS = """\
+CITATION MODE IS ON. Cite your sources:
+- Immediately after each atomic factual claim that comes from retrieved \
+Wikipedia text, put a superscript marker (¹ ² ³ ...).
+- End the answer with a source list, one line per marker, e.g.:
+  ¹ Kobdilj — Wikipedia
+- A citation is a guarantee: "this fact appears in that article's text \
+retrieved during this conversation." Cite ONLY such claims, and point each \
+marker at the article whose retrieved text contains the fact.
+- Never put a citation on anything that comes from your own memory \
+(including clearly-labeled unverified statements) — leave those unmarked. \
+An unmarked claim is honest; a fabricated citation is not.
+- Use one marker number per article; multiple claims from the same article \
+share its number."""
 
 WIKIPEDIA_TOOL = {
     "name": "search_wikipedia",

@@ -17,7 +17,7 @@ from typing import Optional
 
 import anthropic
 
-from prompts import SYSTEM_PROMPT, WIKIPEDIA_TOOL
+from prompts import CITATION_INSTRUCTIONS, SYSTEM_PROMPT, WIKIPEDIA_TOOL
 from wikipedia import search_wikipedia
 
 MODEL = "claude-opus-4-8"
@@ -25,8 +25,13 @@ MAX_TOKENS = 16000
 MAX_TURNS = 5  # hard cap on API round trips per question
 
 
-def answer(question: str, client: Optional[anthropic.Anthropic] = None) -> dict:
+def answer(
+    question: str,
+    client: Optional[anthropic.Anthropic] = None,
+    cite: bool = False,
+) -> dict:
     client = client or anthropic.Anthropic()
+    system_text = SYSTEM_PROMPT + ("\n\n" + CITATION_INSTRUCTIONS if cite else "")
     messages = [{"role": "user", "content": question}]
 
     queries: list[str] = []
@@ -43,7 +48,7 @@ def answer(question: str, client: Optional[anthropic.Anthropic] = None) -> dict:
             system=[
                 {
                     "type": "text",
-                    "text": SYSTEM_PROMPT,
+                    "text": system_text,
                     "cache_control": {"type": "ephemeral"},
                 }
             ],
