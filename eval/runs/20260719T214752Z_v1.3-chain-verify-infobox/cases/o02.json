@@ -1,0 +1,29 @@
+{
+  "id": "o02",
+  "category": "optional_search",
+  "question": "Who painted the Mona Lisa?",
+  "expect_search": "optional",
+  "expected_answer": "Leonardo da Vinci",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "Leonardo da Vinci painted the Mona Lisa.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 87,
+    "output_tokens": 23
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "The answer correctly identifies Leonardo da Vinci as the painter, matching the expected answer; no search was needed for this well-known fact.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.2056,
+    "rouge1_f": 0.6,
+    "rougeL_f": 0.6,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "mh-04",
+  "category": "multi_hop",
+  "question": "In what year was the football club founded that the 2025 Ballon d'Or winner was playing for when he won?",
+  "expect_search": true,
+  "min_searches": 2,
+  "expected_answer": "1970 \u2014 the winner, Ousmane Dembele, plays for Paris Saint-Germain, founded in 1970.",
+  "notes": "Chain: 2025 Ballon d'Or winner (Dembele) -> his club (Paris Saint-Germain) -> founding year. Accept the founding year the retrieved evidence states for PSG.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8r2jq1fcMwt1yZXHKB'}"
+}

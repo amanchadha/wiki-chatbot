@@ -1,0 +1,9 @@
+{
+  "id": "r06",
+  "category": "retrieval_required",
+  "question": "What is the population of Greenland?",
+  "expect_search": true,
+  "expected_answer": "About 56,000 to 57,000 people.",
+  "notes": "Accept any figure between 55,000 and 58,000.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8p3q1XV1ponxVZ4nBe'}"
+}

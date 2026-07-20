@@ -1,0 +1,30 @@
+{
+  "id": "n06",
+  "category": "no_search",
+  "question": "What's the difference between 'affect' and 'effect'?",
+  "expect_search": false,
+  "expected_answer": "Affect is usually a verb meaning to influence; effect is usually a noun meaning the result.",
+  "notes": "Mentioning the main verb/noun distinction is sufficient for correct; covering rarer senses (effect as verb, affect as noun) is a bonus, not required.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "\"Affect\" and \"effect\" are commonly confused, but here's the key distinction:\n\n**Affect** is usually a **verb** meaning \"to influence\" or \"to have an impact on.\"\n- *The weather can affect your mood.*\n- *The new policy affected many employees.*\n\n**Effect** is usually a **noun** meaning \"a result\" or \"consequence.\"\n- *The medicine had a positive effect.*\n- *We're still studying the effects of the change.*\n\n**A quick trick:** If you can put \"the\" or \"an\" in front of it, you probably want *effect* (the noun). If you're describing an action, you probably want *affect* (the verb).\n\n**The tricky exceptions:**\n\n- **Effect** can be a **verb** meaning \"to bring about\" or \"to cause (something) to happen\":\n  - *The manager hoped to effect change in the company.*\n\n- **Affect** can be a **noun** in psychology, meaning an observable emotional expression:\n  - *The patient displayed a flat affect.*\n\nFor everyday writing, the simple rule holds true about 95% of the time: **affect = verb (action), effect = noun (result).**",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 697,
+    "output_tokens": 360
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "No search was needed for this general knowledge grammar question; the answer correctly states the core distinction (affect=verb/influence, effect=noun/result) plus accurate bonus exceptions, matching the expected answer and case notes.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0109,
+    "rouge1_f": 0.1829,
+    "rougeL_f": 0.1829,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

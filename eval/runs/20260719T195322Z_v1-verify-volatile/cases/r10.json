@@ -1,0 +1,38 @@
+{
+  "id": "r10",
+  "category": "retrieval_required",
+  "question": "What is the exact height of Mount Kosciuszko in meters?",
+  "expect_search": true,
+  "expected_answer": "2,228 meters.",
+  "notes": "Accept a figure within a few meters of 2,228.",
+  "searched": true,
+  "queries": [
+    "Mount Kosciuszko",
+    "Mount Kosciuszko",
+    "Mount Kosciuszko"
+  ],
+  "tool_results": [
+    "Wikipedia search failed (429 Client Error: Too Many Requests for url: https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=Mount+Kosciuszko&srlimit=3&format=json). You may retry.",
+    "Wikipedia search failed (429 Client Error: Too Many Requests for url: https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=Mount+Kosciuszko&srlimit=3&format=json). You may retry.",
+    "Wikipedia search failed (429 Client Error: Too Many Requests for url: https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=Mount+Kosciuszko&srlimit=3&format=json). You may retry."
+  ],
+  "answer": "I wasn't able to reach Wikipedia to verify (repeated rate-limit errors). Based on my general knowledge, Mount Kosciuszko\u2014Australia's highest mainland peak\u2014stands at about **2,228 meters** (7,310 feet). However, I couldn't confirm this exact figure against a source right now, so please double-check if precision matters.",
+  "num_turns": 4,
+  "usage": {
+    "input_tokens": 4948,
+    "output_tokens": 341
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "insufficient",
+  "right_article": "no",
+  "faithfulness": "unfaithful",
+  "reason": "All three searches failed with 429 errors, yielding no usable content, so evidence is insufficient and no article was retrieved. The assistant still gave the correct figure (2,228 m) from memory, which matches the expected answer, but this is unfaithful since it wasn't supported by any retrieved evidence.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0136,
+    "rouge1_f": 0.1053,
+    "rougeL_f": 0.1053,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

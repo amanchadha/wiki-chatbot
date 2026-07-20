@@ -1,0 +1,30 @@
+{
+  "id": "d02",
+  "category": "disambiguation",
+  "question": "How hot does the surface of Mercury get?",
+  "expect_search": "optional",
+  "expected_answer": "The planet Mercury's daytime surface reaches about 430 degrees Celsius, roughly 800 degrees Fahrenheit.",
+  "notes": "Accept 420-450 C. Must be about the planet, not the element or anything else. The model plausibly knows this from memory, so search is optional; if it searches, the right article is the planet.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "Mercury's surface temperatures are extreme because it has virtually no atmosphere to retain heat:\n\n- **Daytime (maximum):** about **430 \u00b0C (800 \u00b0F)** at the equator during the day.\n- **Nighttime (minimum):** it plunges to around **\u2013180 \u00b0C (\u2013290 \u00b0F)**.\n\nThis roughly 600 \u00b0C swing is one of the largest temperature ranges of any planet in the Solar System. Interestingly, despite being the closest planet to the Sun, Mercury is not the hottest planet\u2014Venus is, because its thick atmosphere traps heat, giving it a more consistent surface temperature of about 465 \u00b0C.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 693,
+    "output_tokens": 253
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "No search was issued (search optional per notes), and the answer states 430\u00b0C daytime surface temperature for Mercury, matching the expected value within tolerance; additional accurate context about nighttime temps and Venus comparison doesn't detract.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0049,
+    "rouge1_f": 0.1887,
+    "rougeL_f": 0.1132,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

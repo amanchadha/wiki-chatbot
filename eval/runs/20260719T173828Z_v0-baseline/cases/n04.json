@@ -1,0 +1,19 @@
+{
+  "id": "n04",
+  "category": "no_search",
+  "question": "What is the capital of France?",
+  "expect_search": false,
+  "expected_answer": "Paris.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "The capital of France is Paris.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 687,
+    "output_tokens": 12
+  },
+  "verdict": "correct",
+  "judge_reason": "The assistant correctly identified Paris as the capital of France, matching the expected answer.",
+  "passed": true
+}

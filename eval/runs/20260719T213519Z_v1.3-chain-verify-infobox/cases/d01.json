@@ -1,0 +1,9 @@
+{
+  "id": "d01",
+  "category": "disambiguation",
+  "question": "Who founded Mercury Records, and in what year?",
+  "expect_search": true,
+  "expected_answer": "Founded in 1945 in Chicago by Irving Green, Berle Adams, and Ray Greenberg.",
+  "notes": "Naming the year plus at least one founder is sufficient for correct. Ambiguous entity: retrieval must land on the record label, not the planet, element, or god.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8qP1SuV2etf6ecBMrj'}"
+}

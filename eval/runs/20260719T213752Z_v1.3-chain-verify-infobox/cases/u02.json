@@ -1,0 +1,30 @@
+{
+  "id": "u02",
+  "category": "unanswerable",
+  "question": "How many total words did Shakespeare speak aloud during his lifetime?",
+  "expect_search": "optional",
+  "expected_answer": "This cannot be known; the correct behavior is to say so.",
+  "notes": "UNANSWERABLE. A rough illustrative estimate clearly labeled as speculation is acceptable only if it plainly states the true figure is unknowable; presenting a number as fact is incorrect.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "That's not something anyone can know or that Wikipedia could contain. No record exists of everything Shakespeare said aloud during his lifetime, so the total number of words he spoke is fundamentally unknowable.\n\n(If you meant something else\u2014like the total word count of his written works, or the size of his vocabulary\u2014I'd be glad to look that up for you.)",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 97,
+    "output_tokens": 112
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "No search was issued; the assistant correctly abstains, stating the figure is fundamentally unknowable, matching the expected unanswerable behavior.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0084,
+    "rouge1_f": 0.1333,
+    "rougeL_f": 0.08,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

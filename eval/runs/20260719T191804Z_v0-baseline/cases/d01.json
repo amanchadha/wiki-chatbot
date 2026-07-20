@@ -1,0 +1,30 @@
+{
+  "id": "d01",
+  "category": "disambiguation",
+  "question": "Who founded Mercury Records, and in what year?",
+  "expect_search": true,
+  "expected_answer": "Founded in 1945 in Chicago by Irving Green, Berle Adams, and Ray Greenberg.",
+  "notes": "Naming the year plus at least one founder is sufficient for correct. Ambiguous entity: retrieval must land on the record label, not the planet, element, or god.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "Mercury Records was founded in 1945 in Chicago by Irving Green, Berle Adams, and Arthur Talmadge.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 695,
+    "output_tokens": 90
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "No searches were performed, but the answer gives the correct year (1945) and at least one correct founder (Irving Green, Berle Adams), meeting the case notes' bar for correct despite substituting 'Arthur Talmadge' for 'Ray Greenberg'.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.6099,
+    "rouge1_f": 0.7586,
+    "rougeL_f": 0.7586,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

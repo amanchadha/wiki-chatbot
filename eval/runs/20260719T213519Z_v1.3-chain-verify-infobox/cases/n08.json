@@ -1,0 +1,9 @@
+{
+  "id": "n08",
+  "category": "no_search",
+  "question": "Convert 100 degrees Fahrenheit to Celsius.",
+  "expect_search": false,
+  "expected_answer": "About 37.8 degrees Celsius.",
+  "notes": "Accept 37.7-37.8, or 'roughly 38'.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8q1ZcEL7btfYmfBoHt'}"
+}

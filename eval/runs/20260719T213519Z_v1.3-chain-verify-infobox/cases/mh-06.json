@@ -1,0 +1,10 @@
+{
+  "id": "mh-06",
+  "category": "multi_hop",
+  "question": "What is the population of the village where the architect Max Fabiani was born?",
+  "expect_search": true,
+  "min_searches": 2,
+  "expected_answer": "Grade against retrieved evidence: Fabiani was born in Kobdilj (near Stanjel), Slovenia \u2014 a small village whose population is a small figure, likely under a few hundred.",
+  "notes": "Obscure at both hops: the village (Kobdilj) is far too small for the model to know its population from memory, forcing a genuine chained search. Correct requires the population figure shown in retrieved evidence; a confident unverified figure is incorrect.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8rAEnCKzzdEsgcfdhx'}"
+}

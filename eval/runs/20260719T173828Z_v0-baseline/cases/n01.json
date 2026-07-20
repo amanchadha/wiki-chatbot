@@ -1,0 +1,19 @@
+{
+  "id": "n01",
+  "category": "no_search",
+  "question": "What is 289 divided by 17?",
+  "expect_search": false,
+  "expected_answer": "17.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "17.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 690,
+    "output_tokens": 4
+  },
+  "verdict": "correct",
+  "judge_reason": "289 divided by 17 equals 17, matching the assistant's answer.",
+  "passed": true
+}

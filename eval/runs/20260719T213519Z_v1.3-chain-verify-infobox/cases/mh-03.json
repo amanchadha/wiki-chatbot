@@ -1,0 +1,10 @@
+{
+  "id": "mh-03",
+  "category": "multi_hop",
+  "question": "Who is the spouse of the current Chancellor of Germany?",
+  "expect_search": true,
+  "min_searches": 1,
+  "expected_answer": "Charlotte Merz, wife of Chancellor Friedrich Merz.",
+  "notes": "Chain: current chancellor (Friedrich Merz, since May 2025) -> spouse. The spouse is typically stated in the chancellor's own article, so one search can complete the chain. A stale chain via Olaf Scholz (spouse Britta Ernst) is incorrect.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8r2jLCGwzkQUeMGFbK'}"
+}

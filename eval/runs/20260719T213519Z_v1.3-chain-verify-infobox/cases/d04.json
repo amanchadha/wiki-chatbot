@@ -1,0 +1,9 @@
+{
+  "id": "d04",
+  "category": "disambiguation",
+  "question": "What was the population of Java, South Dakota at the most recent census?",
+  "expect_search": true,
+  "expected_answer": "About 129 people at the 2020 census.",
+  "notes": "Accept the figure the current Wikipedia article states, roughly 100-150. Must be about the South Dakota town, not the island or the programming language.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8qXa9AY34ouVcdctRS'}"
+}

@@ -1,0 +1,52 @@
+{
+  "timestamp": "20260719T213752Z",
+  "prompt_version": "v1.3-chain-verify-infobox",
+  "agent_model": "claude-opus-4-8",
+  "judge_model": "claude-sonnet-5",
+  "judge_version": "judge-v2",
+  "n_cases": 40,
+  "n_errors": 0,
+  "pass_rate": 0.975,
+  "pass_rate_by_category": {
+    "disambiguation": "4/4",
+    "multi_hop": "8/8",
+    "no_search": "8/8",
+    "optional_search": "4/4",
+    "retrieval_required": "11/12",
+    "unanswerable": "4/4"
+  },
+  "search_recall": 0.955,
+  "search_precision": 1.0,
+  "spurious_searches": [],
+  "missed_searches": [
+    "r08"
+  ],
+  "n_searched_cases": 22,
+  "evidence_sufficiency_rate": 0.955,
+  "right_article_rate": 1.0,
+  "unfaithful_ids": [],
+  "tool_calls": 27,
+  "tool_errors": 0,
+  "tool_error_rate": 0.0,
+  "multi_hop_underchained": [],
+  "mean_searches_multi_hop": 1.5,
+  "abstained_on_unanswerable": "3/4",
+  "wrong_abstention_ids": [
+    "mh-08"
+  ],
+  "mean_searches_per_case": 0.68,
+  "total_tokens": {
+    "input": 88555,
+    "output": 5002
+  },
+  "lexical_metric_availability": {
+    "bleu": "ok",
+    "rouge": "ok",
+    "bertscore": "failed at runtime: OSError: Unable to load weights from pytorch checkpoint file for '/Users/Aman/.cache/huggingface/hub/models--roberta-large/snapshots/722cf37b1afa9454edce342e7895e588b6ff1d59/pytorch_model.bin' at '/Users/Aman/.cache/huggingface/hub/models--roberta-large/snapshots/722cf37b1afa9454edce342e7895e588b6ff1d59/pytorch_model.bin'. If you tried to load a PyTorch model from a TF 2.0 checkpoint, please set from_tf=True.",
+    "moverscore": "unavailable: import-time model download timed out (>180s); disabled"
+  },
+  "failed_ids": [
+    "r09"
+  ],
+  "error_ids": []
+}

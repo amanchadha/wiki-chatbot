@@ -1,0 +1,19 @@
+{
+  "id": "r05",
+  "category": "retrieval_required",
+  "question": "Who won the 2024 Booker Prize, and for which novel?",
+  "expect_search": true,
+  "expected_answer": "Samantha Harvey, for the novel Orbital.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "The 2024 Booker Prize was won by **Samantha Harvey** for her novel **\"Orbital.\"** The book, set aboard the International Space Station over the course of a single day, made her the first woman to win the prize since 2019.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 700,
+    "output_tokens": 104
+  },
+  "verdict": "correct",
+  "judge_reason": "Correctly identifies Samantha Harvey as the winner and Orbital as the winning novel, matching the expected answer.",
+  "passed": true
+}

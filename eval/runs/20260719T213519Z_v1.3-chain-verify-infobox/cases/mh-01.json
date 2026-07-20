@@ -1,0 +1,10 @@
+{
+  "id": "mh-01",
+  "category": "multi_hop",
+  "question": "What is the capital of the country where the winner of the 2025 Nobel Prize in Literature was born?",
+  "expect_search": true,
+  "min_searches": 1,
+  "expected_answer": "Budapest \u2014 the laureate, Laszlo Krasznahorkai, is Hungarian.",
+  "notes": "Chain: 2025 literature laureate (Krasznahorkai) -> Hungary -> Budapest. The laureate hop must be verified; the capital hop is stable common knowledge, so a single search can legitimately complete the chain.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8qubTspnnST9TMeq6H'}"
+}

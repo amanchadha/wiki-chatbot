@@ -1,0 +1,38 @@
+{
+  "id": "r11",
+  "category": "retrieval_required",
+  "question": "Who is the current Secretary General of NATO?",
+  "expect_search": true,
+  "expected_answer": "Mark Rutte, since October 2024.",
+  "notes": "Stale-memory trap: Jens Stoltenberg is the anticipated stale answer and is incorrect.",
+  "searched": true,
+  "queries": [
+    "Secretary General of NATO",
+    "Secretary General of NATO",
+    "Mark Rutte NATO"
+  ],
+  "tool_results": [
+    "Wikipedia search failed (429 Client Error: Too Many Requests for url: https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=Secretary+General+of+NATO&srlimit=3&format=json). You may retry.",
+    "Wikipedia search failed (429 Client Error: Too Many Requests for url: https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=Secretary+General+of+NATO&srlimit=3&format=json). You may retry.",
+    "Wikipedia search failed (429 Client Error: Too Many Requests for url: https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=Mark+Rutte+NATO&srlimit=3&format=json). You may retry."
+  ],
+  "answer": "I wasn't able to verify this through Wikipedia right now (the search is rate-limited). Based on my knowledge, Mark Rutte (former Prime Minister of the Netherlands) became NATO Secretary General on 1 October 2024, succeeding Jens Stoltenberg. Please double-check with a current source, since I couldn't confirm it via search.",
+  "num_turns": 4,
+  "usage": {
+    "input_tokens": 4892,
+    "output_tokens": 335
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "insufficient",
+  "right_article": "no",
+  "faithfulness": "not_searched",
+  "reason": "All searches failed with 429 errors, yielding no usable evidence and no article was retrieved; however, the assistant correctly answered Mark Rutte since October 2024 from memory while transparently flagging it could not verify via search, matching the expected answer despite the stale-memory trap being avoided.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0218,
+    "rouge1_f": 0.1695,
+    "rougeL_f": 0.1356,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

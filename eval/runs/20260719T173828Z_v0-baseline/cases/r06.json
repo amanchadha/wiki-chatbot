@@ -1,0 +1,19 @@
+{
+  "id": "r06",
+  "category": "retrieval_required",
+  "question": "What is the population of Greenland?",
+  "expect_search": true,
+  "expected_answer": "About 56,000-57,000 people. Accept any figure between 55,000 and 58,000.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "Greenland has a population of approximately **56,000 people** (around 56,000\u201357,000 as of recent estimates), making it one of the least densely populated territories in the world. Its capital, Nuuk, is home to roughly a third of the population.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 689,
+    "output_tokens": 99
+  },
+  "verdict": "correct",
+  "judge_reason": "Assistant states population approximately 56,000-57,000, which falls within the accepted range of 55,000-58,000.",
+  "passed": true
+}

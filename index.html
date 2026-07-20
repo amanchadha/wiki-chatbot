@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wiki Chatbot</title>
+<style>
+  :root {
+    --bg: #f7f6f3; --card: #ffffff; --ink: #1a1a1a; --muted: #6b6b6b;
+    --accent: #2f6f4f; --accent-ink: #ffffff; --line: #e3e1db;
+    --trace-bg: #f0efe9; --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.55 -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+  h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 24px; font-size: .95rem; }
+  form { display: flex; gap: 8px; }
+  input[type=text] {
+    flex: 1; padding: 12px 14px; font-size: 1rem; border: 1px solid var(--line);
+    border-radius: 10px; background: var(--card); color: var(--ink);
+  }
+  input[type=text]:focus { outline: 2px solid var(--accent); border-color: transparent; }
+  button {
+    padding: 12px 20px; font-size: 1rem; border: 0; border-radius: 10px;
+    background: var(--accent); color: var(--accent-ink); cursor: pointer;
+  }
+  button:disabled { opacity: .5; cursor: default; }
+  .samples { margin: 14px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .samples span { flex-basis: 100%; font-size: .8rem; color: var(--muted); }
+  .chip {
+    font-size: .85rem; padding: 6px 12px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--card); color: var(--ink);
+  }
+  .chip:hover { border-color: var(--accent); }
+  #status { margin-top: 24px; color: var(--muted); font-size: .95rem; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 18px 20px; margin-top: 16px;
+  }
+  .card h2 {
+    margin: 0 0 10px; font-size: .8rem; text-transform: uppercase;
+    letter-spacing: .06em; color: var(--muted);
+  }
+  #answer { white-space: pre-wrap; }
+  .trace { background: var(--trace-bg); }
+  .step { margin: 0 0 8px; font-family: var(--mono); font-size: .85rem; }
+  .step .n { color: var(--accent); font-weight: 600; }
+  .nosrch { font-family: var(--mono); font-size: .85rem; color: var(--muted); }
+  details { margin: 4px 0 10px 18px; }
+  summary { cursor: pointer; font-size: .8rem; color: var(--muted); }
+  pre {
+    white-space: pre-wrap; font-family: var(--mono); font-size: .78rem;
+    color: var(--muted); background: var(--card); border: 1px solid var(--line);
+    border-radius: 8px; padding: 10px; max-height: 220px; overflow-y: auto;
+  }
+  .err { color: #a03030; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Wiki Chatbot</h1>
+  <p class="sub">Claude + a <code>search_wikipedia</code> tool. It decides per
+  question whether to verify against Wikipedia — the search trace below each
+  answer shows exactly what it did.</p>
+
+  <form id="form">
+    <input id="q" type="text" maxlength="500" placeholder="Ask a question…" autocomplete="off">
+    <button id="go" type="submit">Ask</button>
+  </form>
+
+  <div class="samples" id="samples">
+    <span>Try a sample — each shows a different behavior:</span>
+  </div>
+
+  <div id="status" hidden></div>
+
+  <div class="card" id="answerCard" hidden>
+    <h2>Answer</h2>
+    <div id="answer"></div>
+  </div>
+
+  <div class="card trace" id="traceCard" hidden>
+    <h2>Search trace</h2>
+    <div id="trace"></div>
+  </div>
+</main>
+
+<script>
+// Keep in sync with DEMO_QUESTIONS in cli.py.
+const SAMPLES = [
+  ["Who is the current president of Botswana?", "search: stale-memory trap"],
+  ["What is 17 * 24?", "no search: arithmetic"],
+  ["Who founded Mercury Records?", "search: ambiguous entity"],
+  ["What is the population of the city where the current Secretary General of NATO was born?", "multi-hop chain"],
+  ["When did Einstein win his second Nobel Prize?", "false premise"],
+  ["What did Napoleon eat for breakfast on his 30th birthday?", "unanswerable"],
+];
+
+const $ = (id) => document.getElementById(id);
+const samples = $("samples");
+for (const [q, label] of SAMPLES) {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "chip"; b.textContent = q; b.title = label;
+  b.addEventListener("click", () => { $("q").value = q; ask(); });
+  samples.appendChild(b);
+}
+
+$("form").addEventListener("submit", (e) => { e.preventDefault(); ask(); });
+
+async function ask() {
+  const question = $("q").value.trim();
+  if (!question) return;
+  $("go").disabled = true;
+  $("answerCard").hidden = true; $("traceCard").hidden = true;
+  $("status").hidden = false;
+  $("status").className = "";
+  $("status").textContent = "Thinking… (searches can take up to ~30s)";
+  try {
+    const resp = await fetch("/api/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question }),
+    });
+    const data = await resp.json();
+    if (!resp.ok) throw new Error(data.error || `HTTP ${resp.status}`);
+    render(data);
+    $("status").hidden = true;
+  } catch (err) {
+    $("status").className = "err";
+    $("status").textContent = "Error: " + err.message;
+  } finally {
+    $("go").disabled = false;
+  }
+}
+
+function render(data) {
+  $("answer").textContent = data.answer;
+  $("answerCard").hidden = false;
+
+  const trace = $("trace");
+  trace.replaceChildren();
+  if (!data.searched) {
+    const p = document.createElement("p");
+    p.className = "nosrch";
+    p.textContent = "No search — answered from model knowledge.";
+    trace.appendChild(p);
+  } else {
+    data.queries.forEach((q, i) => {
+      const p = document.createElement("p");
+      p.className = "step";
+      const n = document.createElement("span");
+      n.className = "n"; n.textContent = `search ${i + 1} `;
+      p.appendChild(n); p.appendChild(document.createTextNode(`“${q}”`));
+      trace.appendChild(p);
+      const preview = (data.tool_previews || [])[i];
+      if (preview) {
+        const d = document.createElement("details");
+        const s = document.createElement("summary");
+        s.textContent = "tool result (truncated)";
+        const pre = document.createElement("pre");
+        pre.textContent = preview;
+        d.appendChild(s); d.appendChild(pre); trace.appendChild(d);
+      }
+    });
+  }
+  $("traceCard").hidden = false;
+}
+</script>
+</body>
+</html>

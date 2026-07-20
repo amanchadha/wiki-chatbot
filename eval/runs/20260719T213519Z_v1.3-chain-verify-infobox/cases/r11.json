@@ -1,0 +1,9 @@
+{
+  "id": "r11",
+  "category": "retrieval_required",
+  "question": "Who is the current Secretary General of NATO?",
+  "expect_search": true,
+  "expected_answer": "Mark Rutte, since October 2024.",
+  "notes": "Stale-memory trap: Jens Stoltenberg is the anticipated stale answer and is incorrect.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8pRMK27CbeSWd4nU7b'}"
+}

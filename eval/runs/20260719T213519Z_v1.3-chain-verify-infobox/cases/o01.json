@@ -1,0 +1,8 @@
+{
+  "id": "o01",
+  "category": "optional_search",
+  "question": "In what year did World War II end?",
+  "expect_search": "optional",
+  "expected_answer": "1945",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8q8QciqmfHLQAQ3kcD'}"
+}

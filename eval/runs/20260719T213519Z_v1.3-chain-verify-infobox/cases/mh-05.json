@@ -1,0 +1,10 @@
+{
+  "id": "mh-05",
+  "category": "multi_hop",
+  "question": "In which U.S. state was the man born after whom the town of Longyearbyen is named?",
+  "expect_search": true,
+  "min_searches": 1,
+  "expected_answer": "Michigan \u2014 Longyearbyen is named after John Munro Longyear, born in Lansing, Michigan.",
+  "notes": "Obscure intermediate: John Munro Longyear. The obscure verify-required fact is his birthplace; the namesake identity is stable and may come from memory, so a single direct search of his article legitimately completes the chain (min_searches recalibrated 2->1 after the multi-hop baseline). Grade the state against retrieved evidence.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8rAeakqobQZKnucSrJ'}"
+}

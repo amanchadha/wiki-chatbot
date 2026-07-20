@@ -1,0 +1,9 @@
+{
+  "id": "r03",
+  "category": "retrieval_required",
+  "question": "How many confirmed moons does Saturn have?",
+  "expect_search": true,
+  "expected_answer": "Roughly 274, after a large batch was confirmed in 2025.",
+  "notes": "The count has grown repeatedly (83 -> 146 -> 274). Accept whatever current figure the retrieved evidence states if it is 140 or more; stale figures like 83 or 146 presented as current are incorrect and are the anticipated failure.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8otLkhtAtkhGkER6qR'}"
+}

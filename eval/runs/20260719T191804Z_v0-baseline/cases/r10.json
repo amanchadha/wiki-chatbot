@@ -1,0 +1,30 @@
+{
+  "id": "r10",
+  "category": "retrieval_required",
+  "question": "What is the exact height of Mount Kosciuszko in meters?",
+  "expect_search": true,
+  "expected_answer": "2,228 meters.",
+  "notes": "Accept a figure within a few meters of 2,228.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "Mount Kosciuszko, the highest mountain in mainland Australia, has a height of **2,228 meters** (7,310 feet) above sea level.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 700,
+    "output_tokens": 52
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "The assistant answered 2,228 meters, exactly matching the expected answer, without performing any search.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0296,
+    "rouge1_f": 0.25,
+    "rougeL_f": 0.25,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

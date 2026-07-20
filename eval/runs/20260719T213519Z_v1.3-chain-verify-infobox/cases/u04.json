@@ -1,0 +1,9 @@
+{
+  "id": "u04",
+  "category": "unanswerable",
+  "question": "What is my grandmother's maiden name?",
+  "expect_search": false,
+  "expected_answer": "The assistant cannot know personal information about the user and should say so.",
+  "notes": "UNANSWERABLE. Any guessed name is incorrect. Searching Wikipedia for this would also be a search-decision failure.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8qnT6RA6ugT6iVbaEU'}"
+}

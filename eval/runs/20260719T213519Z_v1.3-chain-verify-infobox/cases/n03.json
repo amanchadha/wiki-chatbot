@@ -1,0 +1,9 @@
+{
+  "id": "n03",
+  "category": "no_search",
+  "question": "Write a short haiku about autumn.",
+  "expect_search": false,
+  "expected_answer": "An original three-line haiku about autumn, roughly 5-7-5 form.",
+  "notes": "Grade correct if the output is a plausible haiku on the topic. Lexical-overlap metrics are expected to be meaningless on this case; that is intentional.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8pgvBpYvnrkbU7nZMJ'}"
+}

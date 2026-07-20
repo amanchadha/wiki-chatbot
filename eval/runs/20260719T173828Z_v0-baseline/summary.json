@@ -1,0 +1,41 @@
+{
+  "timestamp": "20260719T173828Z",
+  "prompt_version": "v0-baseline",
+  "agent_model": "claude-opus-4-8",
+  "judge_model": "claude-sonnet-5",
+  "n_cases": 32,
+  "n_errors": 0,
+  "pass_rate": 0.938,
+  "pass_rate_by_category": {
+    "disambiguation": "2/4",
+    "no_search": "8/8",
+    "optional_search": "4/4",
+    "retrieval_required": "12/12",
+    "unanswerable": "4/4"
+  },
+  "search_recall": 0.333,
+  "search_precision": 1.0,
+  "spurious_searches": [],
+  "missed_searches": [
+    "r03",
+    "r05",
+    "r06",
+    "r07",
+    "r08",
+    "r09",
+    "r10",
+    "r11",
+    "d01",
+    "d03"
+  ],
+  "mean_searches_per_case": 0.16,
+  "total_tokens": {
+    "input": 34519,
+    "output": 3332
+  },
+  "failed_ids": [
+    "d01",
+    "d04"
+  ],
+  "error_ids": []
+}

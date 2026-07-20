@@ -1,0 +1,30 @@
+{
+  "id": "r07",
+  "category": "retrieval_required",
+  "question": "How long is the Danube river in kilometers?",
+  "expect_search": true,
+  "expected_answer": "About 2,850 kilometers.",
+  "notes": "Accept figures between 2,800 and 2,900 km.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "The Danube river is approximately **2,850 kilometers** long, making it the second-longest river in Europe (after the Volga). It flows through or borders 10 countries, from its source in Germany's Black Forest to the Black Sea.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 693,
+    "output_tokens": 76
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "No searches were issued, but the stated length (2,850 km) matches the expected answer within the accepted 2,800-2,900 km tolerance.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0176,
+    "rouge1_f": 0.1395,
+    "rougeL_f": 0.1395,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

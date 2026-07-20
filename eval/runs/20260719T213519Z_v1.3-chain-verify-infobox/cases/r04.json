@@ -1,0 +1,8 @@
+{
+  "id": "r04",
+  "category": "retrieval_required",
+  "question": "Who won the 2025 Nobel Prize in Literature?",
+  "expect_search": true,
+  "expected_answer": "Laszlo Krasznahorkai.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8otQy8TuWZ4bdySiYC'}"
+}

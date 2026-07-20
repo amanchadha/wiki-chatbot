@@ -1,0 +1,29 @@
+{
+  "id": "n01",
+  "category": "no_search",
+  "question": "What is 289 divided by 17?",
+  "expect_search": false,
+  "expected_answer": "17",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "17.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 85,
+    "output_tokens": 4
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "289/17 = 17, matching the expected answer; no search was needed for this arithmetic question.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.5,
+    "rouge1_f": 1.0,
+    "rougeL_f": 1.0,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

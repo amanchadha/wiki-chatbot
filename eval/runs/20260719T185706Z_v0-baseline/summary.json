@@ -1,0 +1,52 @@
+{
+  "timestamp": "20260719T185706Z",
+  "prompt_version": "v0-baseline",
+  "agent_model": "claude-opus-4-8",
+  "judge_model": "claude-sonnet-5",
+  "n_cases": 32,
+  "n_errors": 0,
+  "pass_rate": 1.0,
+  "pass_rate_by_category": {
+    "disambiguation": "4/4",
+    "no_search": "8/8",
+    "optional_search": "4/4",
+    "retrieval_required": "12/12",
+    "unanswerable": "4/4"
+  },
+  "search_recall": 0.4,
+  "search_precision": 1.0,
+  "spurious_searches": [],
+  "missed_searches": [
+    "r05",
+    "r06",
+    "r07",
+    "r08",
+    "r09",
+    "r10",
+    "r11",
+    "d01",
+    "d03"
+  ],
+  "n_searched_cases": 6,
+  "evidence_sufficiency_rate": 0.667,
+  "right_article_rate": 0.833,
+  "unfaithful_ids": [
+    "r02",
+    "r12"
+  ],
+  "abstained_on_unanswerable": "4/4",
+  "wrong_abstention_ids": [],
+  "mean_searches_per_case": 0.19,
+  "total_tokens": {
+    "input": 37566,
+    "output": 3566
+  },
+  "lexical_metric_availability": {
+    "bleu": "ok",
+    "rouge": "ok",
+    "bertscore": "failed at runtime: ConnectionError: HTTPSConnectionPool(host='us.aws.cdn.hf.co', port=443): Read timed out.",
+    "moverscore": "unavailable: import-time model download timed out (>180s); disabled"
+  },
+  "failed_ids": [],
+  "error_ids": []
+}

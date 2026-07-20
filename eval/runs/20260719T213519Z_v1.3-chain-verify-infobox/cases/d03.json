@@ -1,0 +1,9 @@
+{
+  "id": "d03",
+  "category": "disambiguation",
+  "question": "In what year was Odessa, Texas founded?",
+  "expect_search": true,
+  "expected_answer": "1881, founded as a water stop and workers' camp on the Texas and Pacific Railway.",
+  "notes": "Must be about the Texas city, not Odesa in Ukraine.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8qWTfxAhgP6zxrrv7y'}"
+}

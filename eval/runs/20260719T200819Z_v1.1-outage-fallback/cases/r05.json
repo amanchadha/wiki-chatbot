@@ -1,0 +1,33 @@
+{
+  "id": "r05",
+  "category": "retrieval_required",
+  "question": "Who won the 2024 Booker Prize, and for which novel?",
+  "expect_search": true,
+  "expected_answer": "Samantha Harvey, for the novel Orbital.",
+  "searched": true,
+  "queries": [
+    "2024 Booker Prize"
+  ],
+  "tool_results": [
+    "# 2024 Booker Prize\n\nThe 2024 Booker Prize is a literary award worth \u00a350,000 given for the best English-language novel published between 1 October 2023 and 30 September 2024 in either the United Kingdom or Ireland. The winner, Samantha Harvey for her sci-fi novel Orbital, was announced on 12 November 2024 at Old Billingsgate in London.\nOf the thirteen authors on the 2024 longlist, announced on 30 July 2024, three (Colin Barrett, Rita Bullwinkel, Yael van der Wouden) were debut novelists and six (Percival Everett, Samantha Harvey, Rachel Kushner, Hisham Matar, Claire Messud, Richard Powers) had been nominated previously. The longlist also featured the first Dutch (van der Wouden) and Native American (Tommy Orange) authors ever to be longlisted. Regarding the thirteen novels in the longlist, chair of the judging panel Edmund de Waal stated that the works varied widely in their style and mood, however he stated the works had a common feature exploring the precarious lives of their characters. He stated: \"The precarity of lives runs through our longlist like quicksilver.\"\nThe shortlist of six finalists was announced on 16 September 2024, with five of the six books being by female authors, the highest number of women shortlisted in the 55-year history of the prize. Harvey had previously been nominated for a Booker Prize when her 2009 debut novel The Wilderness was longlisted for the award. At 136 pages, Orbital was the second shortest novel to be awarded a Booker Prize (with the shortest novel being Penelope Fitzgerald's 1979 winning work Offshore). Orbital was the first novel set in space to win the Booker Prize.\nEdmund de Waal stated regarding Harvey: \"With her language of lyricism and acuity Harvey makes our world strange and new for us.\" de Waal also stated that the novel showed the beauty of the world we all share as well as its fragility.\nDuring her acceptance speech, Harvey dedicated her award to those who \"speak for and not against the Earth, for and not against the dignity of other humans, other life, and all the people who speak for, and call for, and work for peace\".\n\n\n== Judging panel ==\nEdmund de Waal (chair)\nSara Collins\nJustine Jordan\nNitin Sawhney\nYiyun Li\n\n\n== Nominees ==\nAll 2024 nominees are novels.\n\n\n== See also ==\nList of winners and nominated authors of the Booker Prize\n\n\n== References ==\n\nOther matching articles (search again with one of these titles if this is the wrong page): Booker Prize, International Booker Prize"
+  ],
+  "answer": "The 2024 Booker Prize was won by **Samantha Harvey** for her novel **Orbital**, announced on 12 November 2024. Set in space, the 136-page novel is the first space-set work to win the prize and the second shortest Booker winner ever.",
+  "num_turns": 2,
+  "usage": {
+    "input_tokens": 3123,
+    "output_tokens": 154
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "sufficient",
+  "right_article": "yes",
+  "faithfulness": "faithful",
+  "reason": "Tool result directly states Samantha Harvey won for Orbital, and the answer matches this evidence and the expected answer exactly.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0191,
+    "rouge1_f": 0.25,
+    "rougeL_f": 0.2083,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

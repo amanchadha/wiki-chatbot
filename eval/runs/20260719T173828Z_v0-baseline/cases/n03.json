@@ -1,0 +1,19 @@
+{
+  "id": "n03",
+  "category": "no_search",
+  "question": "Write a short haiku about autumn.",
+  "expect_search": false,
+  "expected_answer": "Any reasonable original haiku about autumn (roughly 5-7-5 form). Grade correct if it is a plausible haiku on the topic.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "Crisp leaves drift and fall,\namber light on quiet paths\u2014\nautumn breathes goodbye.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 691,
+    "output_tokens": 49
+  },
+  "verdict": "correct",
+  "judge_reason": "The haiku follows the 5-7-5 syllable structure reasonably well and is clearly about autumn, matching the expected criteria.",
+  "passed": true
+}

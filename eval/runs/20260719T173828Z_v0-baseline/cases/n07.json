@@ -1,0 +1,19 @@
+{
+  "id": "n07",
+  "category": "no_search",
+  "question": "Which two primary colors of paint mix to make green?",
+  "expect_search": false,
+  "expected_answer": "Blue and yellow.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "Blue and yellow.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 695,
+    "output_tokens": 10
+  },
+  "verdict": "correct",
+  "judge_reason": "The assistant's answer matches the expected answer exactly: blue and yellow mix to make green.",
+  "passed": true
+}

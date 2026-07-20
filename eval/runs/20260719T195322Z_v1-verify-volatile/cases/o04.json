@@ -1,0 +1,29 @@
+{
+  "id": "o04",
+  "category": "optional_search",
+  "question": "How many planets are in the Solar System?",
+  "expect_search": "optional",
+  "expected_answer": "Eight planets; Pluto has been excluded since 2006.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "There are 8 planets in the Solar System: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune.\n\n(Pluto was reclassified as a \"dwarf planet\" by the International Astronomical Union in 2006.)",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 985,
+    "output_tokens": 92
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "The assistant correctly stated 8 planets and noted Pluto's 2006 reclassification, matching the expected answer, though no search was performed since this is common knowledge.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0193,
+    "rouge1_f": 0.1538,
+    "rougeL_f": 0.1538,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

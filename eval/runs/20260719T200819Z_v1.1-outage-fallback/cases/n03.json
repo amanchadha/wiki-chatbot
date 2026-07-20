@@ -1,0 +1,30 @@
+{
+  "id": "n03",
+  "category": "no_search",
+  "question": "Write a short haiku about autumn.",
+  "expect_search": false,
+  "expected_answer": "An original three-line haiku about autumn, roughly 5-7-5 form.",
+  "notes": "Grade correct if the output is a plausible haiku on the topic. Lexical-overlap metrics are expected to be meaningless on this case; that is intentional.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "Crimson leaves descend,\nwhispering to the cool earth\u2014\nautumn breathes goodbye.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 1076,
+    "output_tokens": 48
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "The haiku is original, follows roughly 5-7-5 syllable structure, and is thematically about autumn, satisfying the creative-writing task; no search was needed or performed.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0349,
+    "rouge1_f": 0.087,
+    "rougeL_f": 0.087,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "n06",
+  "category": "no_search",
+  "question": "What's the difference between 'affect' and 'effect'?",
+  "expect_search": false,
+  "expected_answer": "Affect is usually a verb (to influence); effect is usually a noun (the result). Mentioning the main verb/noun distinction is sufficient; noting rarer senses is a bonus.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "\"Affect\" and \"effect\" are commonly confused because they sound similar, but they usually work differently:\n\n**Affect** is most often a **verb** meaning \"to influence\" or \"to have an impact on.\"\n- *The weather can affect your mood.*\n- *The new policy affected thousands of workers.*\n\n**Effect** is most often a **noun** meaning \"a result\" or \"consequence.\"\n- *The medicine had a strong effect.*\n- *We're still studying the effects of climate change.*\n\n**A quick trick:** Affect = Action (verb), Effect = End result (noun). Or remember \"RAVEN\": **R**emember, **A**ffect **V**erb, **E**ffect **N**oun.\n\n**The exceptions** (where it gets tricky):\n- **Effect** can be a verb meaning \"to bring about\" or \"to cause to happen\": *The manager hopes to effect change.* (Think: to effect = to make happen.)\n- **Affect** can be a noun in psychology, meaning an observable emotional expression: *The patient displayed a flat affect.*\n\nFor everyday writing, the basic rule\u2014affect (verb) vs. effect (noun)\u2014covers the vast majority of cases.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 697,
+    "output_tokens": 382
+  },
+  "verdict": "correct",
+  "judge_reason": "Answer correctly states the main verb/noun distinction and even adds bonus rarer-sense notes, matching the expected grading guidance.",
+  "passed": true
+}

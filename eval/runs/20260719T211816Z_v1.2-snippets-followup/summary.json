@@ -1,0 +1,54 @@
+{
+  "timestamp": "20260719T211816Z",
+  "prompt_version": "v1.2-snippets-followup",
+  "agent_model": "claude-opus-4-8",
+  "judge_model": "claude-sonnet-5",
+  "judge_version": "judge-v2",
+  "n_cases": 40,
+  "n_errors": 0,
+  "pass_rate": 0.975,
+  "pass_rate_by_category": {
+    "disambiguation": "4/4",
+    "multi_hop": "7/8",
+    "no_search": "8/8",
+    "optional_search": "4/4",
+    "retrieval_required": "12/12",
+    "unanswerable": "4/4"
+  },
+  "search_recall": 0.955,
+  "search_precision": 1.0,
+  "spurious_searches": [],
+  "missed_searches": [
+    "r08"
+  ],
+  "n_searched_cases": 21,
+  "evidence_sufficiency_rate": 0.857,
+  "right_article_rate": 1.0,
+  "unfaithful_ids": [
+    "mh-04"
+  ],
+  "tool_calls": 25,
+  "tool_errors": 0,
+  "tool_error_rate": 0.0,
+  "multi_hop_underchained": [
+    "mh-04",
+    "mh-05",
+    "mh-07"
+  ],
+  "mean_searches_multi_hop": 1.25,
+  "abstained_on_unanswerable": "4/4",
+  "wrong_abstention_ids": [
+    "mh-06",
+    "mh-08"
+  ],
+  "mean_searches_per_case": 0.62,
+  "total_tokens": {
+    "input": 66901,
+    "output": 5135
+  },
+  "failed_ids": [
+    "mh-06"
+  ],
+  "error_ids": [],
+  "note": "summary rebuilt by salvage script after pass-flag bug; agent/judge outputs untouched"
+}

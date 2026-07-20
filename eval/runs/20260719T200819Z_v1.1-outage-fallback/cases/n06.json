@@ -1,0 +1,30 @@
+{
+  "id": "n06",
+  "category": "no_search",
+  "question": "What's the difference between 'affect' and 'effect'?",
+  "expect_search": false,
+  "expected_answer": "Affect is usually a verb meaning to influence; effect is usually a noun meaning the result.",
+  "notes": "Mentioning the main verb/noun distinction is sufficient for correct; covering rarer senses (effect as verb, affect as noun) is a bonus, not required.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "\"Affect\" and \"effect\" are commonly confused because they sound similar, but they typically play different grammatical roles:\n\n**Affect** \u2014 usually a **verb** meaning \"to influence\" or \"to have an impact on.\"\n- *The weather can affect my mood.*\n- *The new policy will affect thousands of workers.*\n\n**Effect** \u2014 usually a **noun** meaning \"a result\" or \"consequence.\"\n- *The new policy had a positive effect on morale.*\n- *We're still seeing the effects of the drought.*\n\n**A quick trick:** If you can put \"the\" or \"an\" in front of it, you probably want **effect** (the noun). If you're describing an action of influencing, use **affect** (the verb).\n\n**The tricky exceptions:**\n- **Effect** can also be a verb meaning \"to bring about\" or \"to cause (something) to happen.\"\n  - *The manager hoped to effect change in the department.* (= to bring about change)\n- **Affect** can be a noun in psychology, meaning an observable emotional expression or mood.\n  - *The patient displayed a flat affect.*\n\nBut 90% of the time, the simple rule holds: **affect = verb (influence), effect = noun (result).**",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 1082,
+    "output_tokens": 382
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "The answer correctly states the main distinction (affect=verb/influence, effect=noun/result) as required, and includes bonus coverage of rarer senses; no search was performed on this general-knowledge language question.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0089,
+    "rouge1_f": 0.1505,
+    "rougeL_f": 0.1505,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

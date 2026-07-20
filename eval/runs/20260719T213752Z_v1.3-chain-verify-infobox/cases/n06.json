@@ -1,0 +1,30 @@
+{
+  "id": "n06",
+  "category": "no_search",
+  "question": "What's the difference between 'affect' and 'effect'?",
+  "expect_search": false,
+  "expected_answer": "Affect is usually a verb meaning to influence; effect is usually a noun meaning the result.",
+  "notes": "Mentioning the main verb/noun distinction is sufficient for correct; covering rarer senses (effect as verb, affect as noun) is a bonus, not required.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "\"Affect\" and \"effect\" are commonly confused because they sound similar, but they usually play different roles:\n\n**Affect** is most often a **verb** meaning \"to influence\" or \"to have an impact on.\"\n- *The weather affects my mood.*\n- *Rising costs affected their decision.*\n\n**Effect** is most often a **noun** meaning \"a result\" or \"consequence.\"\n- *The weather had an effect on my mood.*\n- *The new law had a positive effect.*\n\n**A quick trick:** If you can put \"the\" or \"an\" in front of it, you probably want **effect** (the noun). If you're describing an action of influencing, you want **affect** (the verb).\n\n**The tricky exceptions:**\n- **Effect** can be a *verb* meaning \"to bring about\" or \"to cause to happen\": *The manager effected several changes.* (i.e., made them happen)\n- **Affect** can be a *noun* used mainly in psychology, meaning an observable emotional expression: *The patient displayed a flat affect.*\n\nFor everyday writing, though, remembering \"**a**ffect = **a**ction (verb), **e**ffect = **e**nd result (noun)\" will cover the vast majority of cases.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 92,
+    "output_tokens": 385
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "No search was needed; the answer correctly states the core verb/noun distinction (affect=verb/influence, effect=noun/result) and even adds accurate bonus exceptions, matching the expected answer and case notes.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0039,
+    "rouge1_f": 0.1613,
+    "rougeL_f": 0.1505,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

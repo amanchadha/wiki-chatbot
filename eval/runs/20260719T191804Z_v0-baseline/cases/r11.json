@@ -1,0 +1,30 @@
+{
+  "id": "r11",
+  "category": "retrieval_required",
+  "question": "Who is the current Secretary General of NATO?",
+  "expect_search": true,
+  "expected_answer": "Mark Rutte, since October 2024.",
+  "notes": "Stale-memory trap: Jens Stoltenberg is the anticipated stale answer and is incorrect.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "The current Secretary General of NATO is **Mark Rutte**, the former Prime Minister of the Netherlands. He took office on **1 October 2024**, succeeding Jens Stoltenberg.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 694,
+    "output_tokens": 98
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "Answer correctly names Mark Rutte and the October 2024 start date, matching the expected answer despite no search being performed.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0303,
+    "rouge1_f": 0.2581,
+    "rougeL_f": 0.2581,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

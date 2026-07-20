@@ -1,0 +1,39 @@
+{
+  "id": "r12",
+  "category": "retrieval_required",
+  "question": "Who won the 2025 Ballon d'Or?",
+  "expect_search": true,
+  "expected_answer": "Ousmane Dembele.",
+  "searched": true,
+  "queries": [
+    "2025 Ballon d'Or",
+    "2025 Ballon d'Or",
+    "2025 Ballon d'Or",
+    "Ballon d'Or"
+  ],
+  "tool_results": [
+    "Wikipedia search failed (429 Client Error: Too Many Requests for url: https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=2025+Ballon+d%27Or&srlimit=3&format=json). You may retry.",
+    "Wikipedia search failed (429 Client Error: Too Many Requests for url: https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=2025+Ballon+d%27Or&srlimit=3&format=json). You may retry.",
+    "Wikipedia search failed (429 Client Error: Too Many Requests for url: https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=2025+Ballon+d%27Or&srlimit=3&format=json). You may retry.",
+    "Wikipedia search failed (429 Client Error: Too Many Requests for url: https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=Ballon+d%27Or&srlimit=3&format=json). You may retry."
+  ],
+  "answer": "I wasn't able to verify this because the Wikipedia search is currently rate-limited and repeatedly failed. Rather than risk giving you an incorrect winner from memory for such a recent event, I'd recommend checking a reliable source directly. If you'd like, I can try searching again in a moment.",
+  "num_turns": 5,
+  "usage": {
+    "input_tokens": 6598,
+    "output_tokens": 380
+  },
+  "verdict": "honest_abstention",
+  "evidence_sufficiency": "insufficient",
+  "right_article": "no",
+  "faithfulness": "not_searched",
+  "reason": "All searches failed with 429 errors, yielding no usable evidence; the assistant correctly abstained rather than guessing, so it's an honest abstention with insufficient evidence and no article retrieved.",
+  "passed": false,
+  "lexical": {
+    "bleu": 0.0067,
+    "rouge1_f": 0.0,
+    "rougeL_f": 0.0,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

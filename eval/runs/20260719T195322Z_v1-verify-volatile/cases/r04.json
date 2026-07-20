@@ -1,0 +1,33 @@
+{
+  "id": "r04",
+  "category": "retrieval_required",
+  "question": "Who won the 2025 Nobel Prize in Literature?",
+  "expect_search": true,
+  "expected_answer": "Laszlo Krasznahorkai.",
+  "searched": true,
+  "queries": [
+    "2025 Nobel Prize in Literature"
+  ],
+  "tool_results": [
+    "# 2025 Nobel Prize in Literature\n\nThe 2025 Nobel Prize in Literature was awarded to the Hungarian novelist L\u00e1szl\u00f3 Krasznahorkai (born 1954) \"for his compelling and visionary oeuvre that, in the midst of apocalyptic terror, reaffirms the power of art.\" He is the second Hungarian Nobel laureate in Literature after Imre Kert\u00e9sz in 2002.\n\n\n== Laureate ==\n \nA Hungarian novelist and screenwriter known for his dense, philosophical prose and apocalyptic vision of modern life, Krasznahorkai gained international recognition with his debut novel Satantango (1985), a haunting portrayal of decay and despair in a collapsing village, later adapted into a film by B\u00e9la Tarr. His writing often explores chaos, isolation, and the search for meaning in an unstable world.\nAmong his acclaimed works are The Melancholy of Resistance (1989), War and War (1999), and Seiobo There Below (2008), which won the Best Translated Book Award. His collaborations with B\u00e9la Tarr, especially Werckmeister Harmonies, brought his dark, meditative storytelling to global audiences. Krasznahorkai\u2019s style\u2014marked by long, winding sentences and profound reflection\u2014has earned him the reputation as one of Europe\u2019s most challenging and visionary contemporary writers.\n\n\n== Pre-announcement speculations ==\nL\u00e1szl\u00f3 Krasznahorkai was one of the favourites to win the 2025 Nobel Prize in Literature along with Chinese author Can Xue, Canadian Margaret Atwood, Japanese Haruki Murakami and Salman Rushdie. Other possible candidates speculated about in the media and appearing on betting lists included Australian Gerald Murnane, Hungarian P\u00e9ter N\u00e1das, American Thomas Pynchon, Canadian Anne Carson, Spanish Enrique Vila-Matas, French Michel Houellebecq, Romanian Mircea C\u0103rt\u0103rescu, Indian Amitav Ghosh, Argentinian C\u00e9sar Aira, Australian Alexis Wright, Mexican Cristina Rivera Garza, Swiss Christian Kracht, Chilean Raul Zurita, and the Antigua born Jamaica Kincaid.\n\n\n== Reactions ==\nWriting for The Atlantic, Walt Hunter said: \"L\u00e1szl\u00f3 Krasznahorkai is unusually experimental for a Nobel Prize winner, but in an unstable world, his selection feels perfectly timely.\"\n\"Krasznahorkai richly deserves the prize\", novelist Hari Kunzru said. \u201cHe has a reputation as an austere figure of European high culture, and indeed some of his work is uncompromisingly bleak and difficult, but he\u2019s also a curious, playful and very funny writer.\"\n\n\n== Award ceremony speech ==\nAt the award ceremony in Stockholm on 10 December 2025, chair of the Swedish Academy's Nobel committee Anders Olsson said:\n\nKrasznahorkai\u2019s signature as a writer is a flowing syntax that encompasses both weightiness and lightness, melancholy and elation, tall tales and poetic intensity [...] It is L\u00e1szl\u00f3 Krasznahorkai\u2019s greatness as a writer to have succeeded in combining an artistic gaze, entirely free of illusion, that sees through the fragility of the orders established by man, with an unwavering faith in the power of literature.\n\n\n== Nobel Committee ==\nThe 2025 Nobel Committee consists of the following members: \n\n\n== References ==\n\n\n== External links ==\nPrize announcement nobelprize.org\nAward ceremony video nobelprize.org\nAward ceremony speech nobelprize.org\nNobel Prize lecture nobelprize.org\nNobel diploma nobelprize.org\nBanquet speech nobelprize.org\nExcerpts from L\u00e1szl\u00f3 Krasznahorkai's prose nobelprize.org\n\nOther matching articles (search again with one of these titles if this is the wrong page): List of Nobel laureates in Literature, 2026 Nobel Prize in Literature"
+  ],
+  "answer": "The 2025 Nobel Prize in Literature was awarded to Hungarian novelist **L\u00e1szl\u00f3 Krasznahorkai**, \"for his compelling and visionary oeuvre that, in the midst of apocalyptic terror, reaffirms the power of art.\" He is the second Hungarian laureate in Literature, after Imre Kert\u00e9sz in 2002.",
+  "num_turns": 2,
+  "usage": {
+    "input_tokens": 3417,
+    "output_tokens": 202
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "sufficient",
+  "right_article": "yes",
+  "faithfulness": "faithful",
+  "reason": "The retrieved article directly confirms L\u00e1szl\u00f3 Krasznahorkai won the 2025 Nobel Prize in Literature, and the assistant's answer matches this evidence and the expected answer exactly.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0077,
+    "rouge1_f": 0.0417,
+    "rougeL_f": 0.0417,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

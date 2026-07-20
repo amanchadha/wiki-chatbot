@@ -1,0 +1,9 @@
+{
+  "id": "r10",
+  "category": "retrieval_required",
+  "question": "What is the exact height of Mount Kosciuszko in meters?",
+  "expect_search": true,
+  "expected_answer": "2,228 meters.",
+  "notes": "Accept a figure within a few meters of 2,228.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8pJGfg6Rq6QAt22UR3'}"
+}

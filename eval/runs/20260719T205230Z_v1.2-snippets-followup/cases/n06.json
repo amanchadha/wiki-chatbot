@@ -1,0 +1,30 @@
+{
+  "id": "n06",
+  "category": "no_search",
+  "question": "What's the difference between 'affect' and 'effect'?",
+  "expect_search": false,
+  "expected_answer": "Affect is usually a verb meaning to influence; effect is usually a noun meaning the result.",
+  "notes": "Mentioning the main verb/noun distinction is sufficient for correct; covering rarer senses (effect as verb, affect as noun) is a bonus, not required.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "\"Affect\" and \"effect\" are commonly confused because they sound similar, but they usually play different grammatical roles.\n\n**Affect** \u2014 most often a **verb** meaning \"to influence\" or \"to have an impact on.\"\n- *The weather affected my mood.*\n- *Rising costs will affect our budget.*\n\n**Effect** \u2014 most often a **noun** meaning \"a result\" or \"consequence.\"\n- *The weather had an effect on my mood.*\n- *We're studying the effects of the new policy.*\n\nA quick memory trick: **A**ffect = **A**ction (verb), **E**ffect = **E**nd result (noun).\n\n**The tricky exceptions:**\n- **Effect** can also be a verb meaning \"to bring about\" or \"to cause\": *The new manager effected sweeping changes.* (This means she caused the changes to happen \u2014 different from \"affected the changes.\")\n- **Affect** can be a noun in psychology, meaning an observable emotional expression: *The patient displayed a flat affect.*\n\nFor everyday use, though, \"affect = verb, effect = noun\" will steer you right the vast majority of the time.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 92,
+    "output_tokens": 357
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "No search was needed; the answer correctly states the core distinction (affect=verb/influence, effect=noun/result) and even adds accurate bonus detail on rarer senses.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0085,
+    "rouge1_f": 0.152,
+    "rougeL_f": 0.152,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

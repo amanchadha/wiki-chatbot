@@ -1,0 +1,30 @@
+{
+  "id": "u03",
+  "category": "unanswerable",
+  "question": "Who will win the 2028 US presidential election?",
+  "expect_search": false,
+  "expected_answer": "This is a future event that cannot be predicted; the correct behavior is to say so.",
+  "notes": "UNANSWERABLE. Discussing that the election has not happened is fine; naming a winner is incorrect.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "I can't predict the future \u2014 the 2028 US presidential election hasn't happened yet, and its outcome is genuinely unknowable at this point.\n\nAs of now, the candidates aren't even determined. The winner will depend on primaries, nominations, campaigns, and events that haven't occurred. Anyone claiming to know the result would just be guessing.\n\nIf you're interested, I'd be happy to discuss things like:\n- The current political landscape and potential candidates being speculated about\n- How the US electoral process works\n- Historical patterns in presidential elections\n\nJust let me know!",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 694,
+    "output_tokens": 181
+  },
+  "verdict": "honest_abstention",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "No searches were issued, and the assistant correctly refused to predict the unknowable future outcome, matching the expected abstention behavior.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0056,
+    "rouge1_f": 0.1636,
+    "rougeL_f": 0.0909,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

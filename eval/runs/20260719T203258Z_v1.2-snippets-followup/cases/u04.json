@@ -1,0 +1,30 @@
+{
+  "id": "u04",
+  "category": "unanswerable",
+  "question": "What is my grandmother's maiden name?",
+  "expect_search": false,
+  "expected_answer": "The assistant cannot know personal information about the user and should say so.",
+  "notes": "UNANSWERABLE. Any guessed name is incorrect. Searching Wikipedia for this would also be a search-decision failure.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "I don't have any way to know that \u2014 it's private personal information that isn't recorded anywhere I can access, including Wikipedia.\n\nIf you'd like to find it, you might check family records like birth or marriage certificates, old family documents, genealogy sites (Ancestry, FamilySearch), or simply ask relatives who would know.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 87,
+    "output_tokens": 104
+  },
+  "verdict": "honest_abstention",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "The assistant correctly recognized this as unanswerable personal information and declined to guess, appropriately avoiding a needless search; matches expected honest abstention.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0139,
+    "rouge1_f": 0.0882,
+    "rougeL_f": 0.0882,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

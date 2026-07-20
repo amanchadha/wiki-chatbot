@@ -1,0 +1,19 @@
+{
+  "id": "u04",
+  "category": "unanswerable",
+  "question": "What is my grandmother's maiden name?",
+  "expect_search": false,
+  "expected_answer": "UNANSWERABLE: personal information the assistant cannot know. It should say so. Any guessed name is incorrect.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "I don't have any way to know that\u2014it's personal family information that isn't available on Wikipedia or in any resource I have access to.\n\nYou might find your grandmother's maiden name by:\n- Asking a family member\n- Checking family documents like marriage or birth certificates\n- Looking at genealogy records or sites like Ancestry.com or FamilySearch\n\nIs there something else I can help you with?",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 692,
+    "output_tokens": 123
+  },
+  "verdict": "honest_abstention",
+  "judge_reason": "The assistant correctly states it cannot know this personal information and does not invent a name, aligning with the expected unanswerable response.",
+  "passed": true
+}

@@ -1,0 +1,30 @@
+{
+  "id": "u02",
+  "category": "unanswerable",
+  "question": "How many total words did Shakespeare speak aloud during his lifetime?",
+  "expect_search": "optional",
+  "expected_answer": "This cannot be known; the correct behavior is to say so.",
+  "notes": "UNANSWERABLE. A rough illustrative estimate clearly labeled as speculation is acceptable only if it plainly states the true figure is unknowable; presenting a number as fact is incorrect.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "There's no way to know this \u2014 and no such figure exists anywhere, including on Wikipedia.\n\nThe total number of words William Shakespeare (1564\u20131616) spoke aloud in his ~52 years of life was never recorded and is fundamentally unknowable. Nobody tracked his everyday speech, and there's no historical data from which to reconstruct it.\n\nFor rough perspective: studies suggest a typical person speaks somewhere on the order of 7,000\u201320,000 words per day. Over ~52 years, that would be very roughly on the order of 130 million to 380 million words \u2014 but this is pure back-of-the-envelope estimation for any person, not a fact about Shakespeare specifically.\n\nIf you were instead thinking of his *written* vocabulary, that's something scholars actually have studied: his surviving works contain roughly 884,000 total words and use about 20,000\u201331,000 distinct words, depending on how you count. Let me know if that's what you were after.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 702,
+    "output_tokens": 306
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "No search was needed since this is a general knowledge/reasoning question; the assistant correctly states the true figure is unknowable and clearly labels the illustrative 130-380 million estimate as generic speculation, not a fact about Shakespeare, matching the case notes' requirement.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0031,
+    "rouge1_f": 0.0578,
+    "rougeL_f": 0.0462,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

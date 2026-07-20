@@ -1,0 +1,8 @@
+{
+  "id": "r08",
+  "category": "retrieval_required",
+  "question": "In what year did Vanuatu gain independence?",
+  "expect_search": true,
+  "expected_answer": "1980, from joint British-French rule as the New Hebrides.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8pBMgxnhob5WLzAcyf'}"
+}

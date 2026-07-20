@@ -1,0 +1,9 @@
+{
+  "id": "r02",
+  "category": "retrieval_required",
+  "question": "Who is the current CEO of Intel?",
+  "expect_search": true,
+  "expected_answer": "Lip-Bu Tan, since March 2025.",
+  "notes": "Stale-memory trap: Pat Gelsinger is the anticipated stale answer and is incorrect.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8og64NXE7S35TCWTJw'}"
+}

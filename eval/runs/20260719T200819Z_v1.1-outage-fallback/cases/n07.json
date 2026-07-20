@@ -1,0 +1,29 @@
+{
+  "id": "n07",
+  "category": "no_search",
+  "question": "Which two primary colors of paint mix to make green?",
+  "expect_search": false,
+  "expected_answer": "Blue and yellow",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "Blue and yellow.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 1080,
+    "output_tokens": 10
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "Answer matches expected 'Blue and yellow' exactly; no search was performed, which is acceptable for this common-knowledge question.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.5946,
+    "rouge1_f": 1.0,
+    "rougeL_f": 1.0,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

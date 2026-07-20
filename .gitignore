@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.DS_Store
+.vercel/
+.env
+.claude/
+CLAUDE.md
+Prompt_Eng_Take-Home_Assignment.pdf

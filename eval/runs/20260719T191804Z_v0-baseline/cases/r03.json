@@ -1,0 +1,30 @@
+{
+  "id": "r03",
+  "category": "retrieval_required",
+  "question": "How many confirmed moons does Saturn have?",
+  "expect_search": true,
+  "expected_answer": "Roughly 274, after a large batch was confirmed in 2025.",
+  "notes": "The count has grown repeatedly (83 -> 146 -> 274). Accept whatever current figure the retrieved evidence states if it is 140 or more; stale figures like 83 or 146 presented as current are incorrect and are the anticipated failure.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "As of the latest counts (2023), Saturn has **146 confirmed moons**, making it the planet with the most known moons in the Solar System. This number surpassed Jupiter after a large batch of newly discovered moons was confirmed.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 694,
+    "output_tokens": 116
+  },
+  "verdict": "incorrect",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "No search was performed; the assistant answered from memory with the stale 146 figure, which the case notes explicitly flag as the anticipated failure (current figure ~274).",
+  "passed": false,
+  "lexical": {
+    "bleu": 0.0627,
+    "rouge1_f": 0.2917,
+    "rougeL_f": 0.25,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

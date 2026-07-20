@@ -1,0 +1,29 @@
+{
+  "id": "n04",
+  "category": "no_search",
+  "question": "What is the capital of France?",
+  "expect_search": false,
+  "expected_answer": "Paris",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "The capital of France is Paris.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 82,
+    "output_tokens": 12
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "Answer correctly states Paris as the capital of France, matching the expected answer; no search was needed for this common knowledge question.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0657,
+    "rouge1_f": 0.2857,
+    "rougeL_f": 0.2857,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

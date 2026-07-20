@@ -1,0 +1,29 @@
+{
+  "id": "o02",
+  "category": "optional_search",
+  "question": "Who painted the Mona Lisa?",
+  "expect_search": "optional",
+  "expected_answer": "Leonardo da Vinci",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "Leonardo da Vinci painted the Mona Lisa. It's one of his most famous works, created in the early 16th century (around 1503\u20131519), and is displayed at the Louvre in Paris.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 87,
+    "output_tokens": 66
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "The assistant correctly identified Leonardo da Vinci as the painter, matching the expected answer, without needing to search since this is common knowledge.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0382,
+    "rouge1_f": 0.1714,
+    "rougeL_f": 0.1714,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

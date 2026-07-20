@@ -1,0 +1,29 @@
+{
+  "id": "r09",
+  "category": "retrieval_required",
+  "question": "In what year was the town of Longyearbyen in Svalbard founded?",
+  "expect_search": true,
+  "expected_answer": "1906, founded by John Munro Longyear of the Arctic Coal Company.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "Longyearbyen was founded in **1906** by John Munro Longyear, whose Arctic Coal Company established the coal-mining settlement, which was named after him.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 97,
+    "output_tokens": 55
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "The answer matches the expected 1906 founding year and correctly attributes it to John Munro Longyear and the Arctic Coal Company; no searches were performed so evidence-related rubrics are not applicable.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.1333,
+    "rouge1_f": 0.5882,
+    "rougeL_f": 0.4706,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

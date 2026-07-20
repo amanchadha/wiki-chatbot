@@ -1,0 +1,19 @@
+{
+  "id": "n05",
+  "category": "no_search",
+  "question": "If I have 3 apples and buy 2 dozen more, how many apples do I have?",
+  "expect_search": false,
+  "expected_answer": "27.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "You have 27 apples (3 + 24 = 27).",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 706,
+    "output_tokens": 20
+  },
+  "verdict": "correct",
+  "judge_reason": "The assistant correctly computed 3 + 24 = 27, matching the expected answer.",
+  "passed": true
+}

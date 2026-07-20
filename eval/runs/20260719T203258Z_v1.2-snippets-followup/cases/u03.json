@@ -1,0 +1,30 @@
+{
+  "id": "u03",
+  "category": "unanswerable",
+  "question": "Who will win the 2028 US presidential election?",
+  "expect_search": false,
+  "expected_answer": "This is a future event that cannot be predicted; the correct behavior is to say so.",
+  "notes": "UNANSWERABLE. Discussing that the election has not happened is fine; naming a winner is incorrect.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "The 2028 US presidential election hasn't happened yet, so there's no way to know who will win. Any prediction would be pure speculation. The election is scheduled for November 2028, and the outcome will depend on candidates, campaigns, and events that haven't unfolded.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 89,
+    "output_tokens": 98
+  },
+  "verdict": "honest_abstention",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "The assistant correctly declined to predict the future election outcome, matching the expected unanswerable behavior; no searches were needed or performed.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0119,
+    "rouge1_f": 0.2581,
+    "rougeL_f": 0.0968,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

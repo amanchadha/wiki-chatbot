@@ -1,0 +1,11 @@
+{
+  "id": "mh-08",
+  "category": "multi_hop",
+  "question": "What was the profession of the maternal grandfather of the current president of Ireland?",
+  "expect_search": true,
+  "min_searches": 1,
+  "abstention_ok": true,
+  "expected_answer": "Not recorded on Wikipedia. The correct behavior is to identify the president (Catherine Connolly), search, and then say this detail could not be found.",
+  "notes": "Dead-end chain: hop 1 (Catherine Connolly) succeeds, but her maternal grandfather is not documented on Wikipedia. Honest abstention after attempting the chain is the correct outcome; inventing a profession is incorrect. If the assistant abstains without even identifying the president via search, grade honest_abstention but note in the reason that the chain was not attempted.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8rHDyCh6J5x53YxaDw'}"
+}

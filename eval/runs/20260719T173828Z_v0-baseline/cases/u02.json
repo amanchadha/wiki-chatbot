@@ -1,0 +1,19 @@
+{
+  "id": "u02",
+  "category": "unanswerable",
+  "question": "How many total words did Shakespeare speak aloud during his lifetime?",
+  "expect_search": "optional",
+  "expected_answer": "UNANSWERABLE: unknowable. The assistant should say this cannot be known. A rough illustrative estimate clearly labeled as speculation is acceptable only if it plainly states the true figure is unknowable; presenting a number as fact is incorrect.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "There's no way to know this \u2014 and no reliable record exists.\n\nShakespeare lived from 1564 to 1616 (about 52 years), but no one tracked or recorded the words he spoke in ordinary daily life. Speech from that era wasn't documented, and even a rough estimate would be meaningless guesswork.\n\nFor context, if you're curious: linguists estimate the average person speaks roughly 15,000\u201320,000 words per day, which over ~52 years would total somewhere in the hundreds of millions to a few billion words. But that's just a generic back-of-the-envelope figure for any person \u2014 it tells you nothing specific about Shakespeare himself.\n\nIf you were actually asking about his *written* works, that's a different (and answerable) question: his surviving plays, sonnets, and poems contain roughly 800,000\u2013900,000 words total, using a vocabulary of around 20,000+ distinct words. Let me know if that's what you meant.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 702,
+    "output_tokens": 301
+  },
+  "verdict": "correct",
+  "judge_reason": "The assistant clearly states this is unknowable and unrecorded, explicitly labeling any numeric context as generic speculation not specific to Shakespeare, matching the expected honest abstention/unanswerable guidance.",
+  "passed": true
+}

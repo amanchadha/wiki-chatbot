@@ -1,0 +1,33 @@
+{
+  "id": "r12",
+  "category": "retrieval_required",
+  "question": "Who won the 2025 Ballon d'Or?",
+  "expect_search": true,
+  "expected_answer": "Ousmane Dembele.",
+  "searched": true,
+  "queries": [
+    "2025 Ballon d'Or"
+  ],
+  "tool_results": [
+    "Search result snippets (matched text):\n- 2025 Ballon d'Or: ...The 2025 Ballon d'Or (lit.\u2009'2025 Golden Ball') was the 69th annual ceremony of the Ballon d'Or, presented by France Football, recognising the best footballers...\n- Ballon d'Or: ...The Ballon d'Or (French pronunciation: [bal\u0254\u0303 d\u0254\u0281] ; lit.\u2009'Golden Ball') is an annual association football award presented by French magazine France Football...\n- Ballon d'Or F\u00e9minin: ...The Ballon d'Or F\u00e9minin (French pronunciation: [bal\u0254\u0303 d\u0254\u0281 femin\u025b\u0303]), also known as the Women's Ballon d'Or, is an association football award presented...\n\n# 2025 Ballon d'Or\n\nThe 2025 Ballon d'Or (lit.\u2009'2025 Golden Ball') was the 69th annual ceremony of the Ballon d'Or, presented by France Football, recognising the best footballers in the world in the 2024\u201325 season. For the fourth time in the history of the award, it was awarded based on the results of the season instead of the calendar year. This was the period from 1 August 2024 to 13 July 2025 (final of the 2025 FIFA Club World Cup) for the men's award, and to 2 August 2025 (final of the 2025 Copa Am\u00e9rica Femenina) for the women's award. The ceremony took place on 22 September 2025, with the nominees having been announced on 7 August 2025.\n\n\n== Ballon d'Or ==\n\nClub listed is the one which the player represented during the 2024\u201325 season.\n30 players were nominated for the 2025 Men's Ballon d'Or.\n\n\n== Ballon d'Or F\u00e9minin ==\n\nThirty players were nominated for the 2025 Ballon d'Or F\u00e9menin.\n\n\n== Men's Kopa Trophy ==\n\nTen players were nominated for the 2025 Men's Kopa Trophy.\n\n\n== Women's Kopa Trophy ==\n\nFive players were nominated for the 2025 Women's Kopa Trophy.\n\n\n== Men's Yashin Trophy ==\n\nTen goalkeepers were nominated for the 2025 Men's Yashin Trophy.\n\n\n== Women's Yashin Trophy ==\n\nFive goalkeepers were nominated for the 2025 Women's Yashin Trophy.\n\n\n== Gerd M\u00fcller Trophy ==\n\nThe nominees for the award were announced on 7 August 2025. The award is given to player who scored the most goals in a calendar year. It is named after German legend Gerd M\u00fcller.\n\n\n== S\u00f3crates Award ==\n\nThe nominees for the award were announced on 7 August 2025. The S\u00f3crates Award is an association football award presented to the best humanitarian work by a footballer worldwide during a joint ceremony with the Ballon d'Or. The award is presented by France Football in collaboration with Peace and Sport and is named after late Brazilian footballer S\u00f3crates, who co-founded the Corinthians Democracy movement, in opposition to the ruling military dictatorship in Brazil during the 1980s.\n\n\n== Men's Club of the Year ==\n\n\n== Women's Club of the Year ==\n\n\n== Men's Coach of the Year ==\n\nFive coaches were nominated for the 2025 Men's Johan Cruyff Trophy.\n\n\n== Women's Coach of the Year ==\n\nFive coaches were nominated for the 2025 Women's Johan Cruyff Trophy.\n\n\n== References ==\n\nInfobox of '2025 Ballon d'Or' (structured facts \u2014 populations, dates, roles, spouses often appear only here):\n| name = 2025 Ballon d'Or\n| image = Ousmane Dembele France v Norway 26 June 26-085.jpg\n| caption = 2025 Ballon d'Or winner, Ousmane Demb\u00e9l\u00e9\n| date = 22 September 2025\n| location = Th\u00e9\u00e2tre du Ch\u00e2telet, Paris, France\n| presenter = ''France Football''\n| host = Kate Scott Ruud Gullit\n| website = URL|ballondor.com\n| award1_type = Ballon d'Or\n| award1_winner = flagicon|FRA Ousmane Demb\u00e9l\u00e9 (1st award)\n| award2_type = Ballon d'Or F\u00e9minin\n| award2_winner = flagicon|ESP Aitana Bonmat\u00ed (3rd award)\n| award3_type = Kopa Trophy\n| award3_winner = '''Men's:''' flagicon|ESP Lamine Yamal (2nd award) '''Women's:''' flagicon|ESP Vicky L\u00f3pez (1st award)\n| award4_type = Yashin Trophy\n| award4_winner = '''Men's:''' flagicon|ITA Gianluigi Donnarumma (2nd award) '''Women's:''' flagicon|ENG Hannah Hampton (1st award)\n| award5_type = Gerd M\u00fcller Trophy\n| award5_winner = '''Men's:''' flagicon|SWE Viktor Gy\u00f6keres (1st award) '''Women's:''' flagicon|POL Ewa Pajor (1st award)\n| previous = 2024\n| main = Ballon d'Or\n| next = 2026\n\nOther matching articles (search again with one of these titles if this is the wrong page): Ballon d'Or, Ballon d'Or F\u00e9minin"
+  ],
+  "answer": "The 2025 men's Ballon d'Or was won by **Ousmane Demb\u00e9l\u00e9** (France/PSG) \u2014 his first award. The women's Ballon d'Or F\u00e9minin went to **Aitana Bonmat\u00ed** of Spain (her third).",
+  "num_turns": 2,
+  "usage": {
+    "input_tokens": 2023,
+    "output_tokens": 161
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "sufficient",
+  "right_article": "yes",
+  "faithfulness": "faithful",
+  "reason": "Infobox explicitly names Ousmane Demb\u00e9l\u00e9 as 2025 Ballon d'Or winner, matching the expected answer; the added detail about Bonmat\u00ed is accurate and consistent with evidence.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0099,
+    "rouge1_f": 0.0556,
+    "rougeL_f": 0.0556,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

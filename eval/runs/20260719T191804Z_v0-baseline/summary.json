@@ -1,0 +1,54 @@
+{
+  "timestamp": "20260719T191804Z",
+  "prompt_version": "v0-baseline",
+  "agent_model": "claude-opus-4-8",
+  "judge_model": "claude-sonnet-5",
+  "n_cases": 32,
+  "n_errors": 0,
+  "pass_rate": 0.969,
+  "pass_rate_by_category": {
+    "disambiguation": "4/4",
+    "no_search": "8/8",
+    "optional_search": "4/4",
+    "retrieval_required": "11/12",
+    "unanswerable": "4/4"
+  },
+  "search_recall": 0.333,
+  "search_precision": 1.0,
+  "spurious_searches": [],
+  "missed_searches": [
+    "r03",
+    "r05",
+    "r06",
+    "r07",
+    "r08",
+    "r09",
+    "r10",
+    "r11",
+    "d01",
+    "d03"
+  ],
+  "n_searched_cases": 5,
+  "evidence_sufficiency_rate": 0.8,
+  "right_article_rate": 1.0,
+  "unfaithful_ids": [
+    "r12"
+  ],
+  "abstained_on_unanswerable": "3/4",
+  "wrong_abstention_ids": [],
+  "mean_searches_per_case": 0.16,
+  "total_tokens": {
+    "input": 34475,
+    "output": 3279
+  },
+  "lexical_metric_availability": {
+    "bleu": "ok",
+    "rouge": "ok",
+    "bertscore": "failed at runtime: OSError: Unable to load weights from pytorch checkpoint file for '/Users/Aman/.cache/huggingface/hub/models--roberta-large/snapshots/722cf37b1afa9454edce342e7895e588b6ff1d59/pytorch_model.bin' at '/Users/Aman/.cache/huggingface/hub/models--roberta-large/snapshots/722cf37b1afa9454edce342e7895e588b6ff1d59/pytorch_model.bin'. If you tried to load a PyTorch model from a TF 2.0 checkpoint, please set from_tf=True.",
+    "moverscore": "unavailable: import-time model download timed out (>180s); disabled"
+  },
+  "failed_ids": [
+    "r03"
+  ],
+  "error_ids": []
+}

@@ -1,0 +1,30 @@
+{
+  "id": "n06",
+  "category": "no_search",
+  "question": "What's the difference between 'affect' and 'effect'?",
+  "expect_search": false,
+  "expected_answer": "Affect is usually a verb meaning to influence; effect is usually a noun meaning the result.",
+  "notes": "Mentioning the main verb/noun distinction is sufficient for correct; covering rarer senses (effect as verb, affect as noun) is a bonus, not required.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "\"Affect\" and \"effect\" are commonly confused because they sound similar, but they usually play different grammatical roles:\n\n**Affect** \u2014 most often a **verb** meaning \"to influence\" or \"to have an impact on.\"\n- *The weather affected my mood.*\n- *Budget cuts will affect many programs.*\n\n**Effect** \u2014 most often a **noun** meaning \"a result\" or \"consequence.\"\n- *The medicine had a noticeable effect.*\n- *We're still seeing the effects of the storm.*\n\n**A quick trick:** A**ffect** = **A**ction (verb); **E**ffect = **E**nd result (noun).\n\n**The tricky exceptions:**\n- **Effect** can be a **verb** meaning \"to bring about\" or \"to cause to happen.\"\n  - *The new manager effected sweeping changes.* (She brought them about.)\n  - Note the difference: to *affect* change = to influence it; to *effect* change = to make it happen.\n- **Affect** can be a **noun** in psychology, meaning an observable emotional expression.\n  - *The patient displayed a flat affect.* (Note: pronounced with stress on the first syllable.)\n\nFor everyday writing, you'll be right the vast majority of the time if you remember: **affect = verb, effect = noun.**",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 92,
+    "output_tokens": 414
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "No search was needed for this general knowledge question; the answer correctly states affect=verb (to influence) and effect=noun (result), matching the expected answer, plus accurate bonus detail on rarer senses.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0038,
+    "rouge1_f": 0.1398,
+    "rougeL_f": 0.1398,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

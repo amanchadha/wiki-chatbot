@@ -1,0 +1,29 @@
+{
+  "id": "n05",
+  "category": "no_search",
+  "question": "If I have 3 apples and buy 2 dozen more, how many apples do I have?",
+  "expect_search": false,
+  "expected_answer": "27 apples",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "You have 27 apples (3 + 24 = 27).",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 706,
+    "output_tokens": 20
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "Simple arithmetic question, no search needed; 3 + 2\u00d712 = 27 matches expected answer.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0677,
+    "rouge1_f": 0.4444,
+    "rougeL_f": 0.4444,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

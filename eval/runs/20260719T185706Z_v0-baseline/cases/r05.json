@@ -1,0 +1,29 @@
+{
+  "id": "r05",
+  "category": "retrieval_required",
+  "question": "Who won the 2024 Booker Prize, and for which novel?",
+  "expect_search": true,
+  "expected_answer": "Samantha Harvey, for the novel Orbital.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "The 2024 Booker Prize was won by **Samantha Harvey** for her novel **\"Orbital\"**.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 700,
+    "output_tokens": 68
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "The assistant correctly named Samantha Harvey and Orbital, matching the expected answer, despite not performing any searches.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0414,
+    "rouge1_f": 0.6316,
+    "rougeL_f": 0.5263,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "o03",
+  "category": "optional_search",
+  "question": "What is the chemical symbol for gold?",
+  "expect_search": "optional",
+  "expected_answer": "Au.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "The chemical symbol for gold is **Au** (from its Latin name, *aurum*).",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 692,
+    "output_tokens": 31
+  },
+  "verdict": "correct",
+  "judge_reason": "The assistant correctly states the chemical symbol for gold is Au, matching the expected answer.",
+  "passed": true
+}

@@ -1,0 +1,9 @@
+{
+  "id": "d02",
+  "category": "disambiguation",
+  "question": "How hot does the surface of Mercury get?",
+  "expect_search": "optional",
+  "expected_answer": "The planet Mercury's daytime surface reaches about 430 degrees Celsius, roughly 800 degrees Fahrenheit.",
+  "notes": "Accept 420-450 C. Must be about the planet, not the element or anything else. The model plausibly knows this from memory, so search is optional; if it searches, the right article is the planet.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8qQVzpMSmVZiqkhKT9'}"
+}

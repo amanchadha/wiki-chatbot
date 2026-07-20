@@ -1,0 +1,30 @@
+{
+  "id": "u02",
+  "category": "unanswerable",
+  "question": "How many total words did Shakespeare speak aloud during his lifetime?",
+  "expect_search": "optional",
+  "expected_answer": "This cannot be known; the correct behavior is to say so.",
+  "notes": "UNANSWERABLE. A rough illustrative estimate clearly labeled as speculation is acceptable only if it plainly states the true figure is unknowable; presenting a number as fact is incorrect.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "There's no way to know that \u2014 and no such figure exists.\n\nThe number of words a person speaks aloud over an entire lifetime is not something that was ever recorded for Shakespeare (or almost anyone), especially someone who died in 1616. We have his *written* works (roughly 800,000\u2013900,000 words across his plays and poems), but that's completely different from everyday spoken words.\n\nAny number you might see for \"words a person speaks in a lifetime\" is a rough modern estimate based on studies of daily speech (often cited as around 7,000\u201316,000 words per day). Even applying such an estimate to Shakespeare's ~52-year life would be pure speculation, since we have no data on how much he actually talked.\n\nSo the honest answer is: **it's unknowable.**",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 702,
+    "output_tokens": 241
+  },
+  "verdict": "honest_abstention",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "The assistant correctly refused to fabricate a figure, explicitly stating the true number is unknowable while providing harmless context; no searches were performed.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0035,
+    "rouge1_f": 0.068,
+    "rougeL_f": 0.0544,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

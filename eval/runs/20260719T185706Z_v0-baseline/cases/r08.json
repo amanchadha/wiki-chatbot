@@ -1,0 +1,29 @@
+{
+  "id": "r08",
+  "category": "retrieval_required",
+  "question": "In what year did Vanuatu gain independence?",
+  "expect_search": true,
+  "expected_answer": "1980, from joint British-French rule as the New Hebrides.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "Vanuatu gained independence in 1980 (from joint British and French rule, on 30 July 1980).",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 694,
+    "output_tokens": 36
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "No search was performed, but the answer correctly states 1980 and matches the expected answer, including the joint British-French rule detail.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0533,
+    "rouge1_f": 0.48,
+    "rougeL_f": 0.48,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

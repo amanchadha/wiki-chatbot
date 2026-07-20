@@ -1,0 +1,29 @@
+{
+  "id": "o01",
+  "category": "optional_search",
+  "question": "In what year did World War II end?",
+  "expect_search": "optional",
+  "expected_answer": "1945",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "World War II ended in 1945.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 83,
+    "output_tokens": 12
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "Answer matches expected date of 1945; no search was needed for this well-known fact.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0657,
+    "rouge1_f": 0.2857,
+    "rougeL_f": 0.2857,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

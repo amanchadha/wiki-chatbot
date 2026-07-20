@@ -1,0 +1,30 @@
+{
+  "id": "r06",
+  "category": "retrieval_required",
+  "question": "What is the population of Greenland?",
+  "expect_search": true,
+  "expected_answer": "About 56,000 to 57,000 people.",
+  "notes": "Accept any figure between 55,000 and 58,000.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "Greenland's population is approximately 56,000 people, making it one of the least densely populated territories in the world.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 689,
+    "output_tokens": 50
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "Answer states ~56,000, which falls within the accepted 55,000-58,000 range; no search was performed but the factual claim matches expectation.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0252,
+    "rouge1_f": 0.2222,
+    "rougeL_f": 0.2222,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

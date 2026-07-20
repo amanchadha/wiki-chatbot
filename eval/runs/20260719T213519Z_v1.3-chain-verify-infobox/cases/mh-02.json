@@ -1,0 +1,10 @@
+{
+  "id": "mh-02",
+  "category": "multi_hop",
+  "question": "What is the population of the city where the current Secretary General of NATO was born?",
+  "expect_search": true,
+  "min_searches": 2,
+  "expected_answer": "About 550,000 \u2014 Mark Rutte was born in The Hague.",
+  "notes": "Chain: current NATO SG (Mark Rutte) -> born in The Hague -> population. Accept any Hague population figure consistent with retrieved evidence (roughly 500,000-600,000). Both the officeholder and the population are verify-required fact types, so expect at least two searches.",
+  "error": "BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CdC8quYjn2Fqd4g14qfog'}"
+}

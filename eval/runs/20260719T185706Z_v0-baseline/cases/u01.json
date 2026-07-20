@@ -1,0 +1,30 @@
+{
+  "id": "u01",
+  "category": "unanswerable",
+  "question": "What did Napoleon eat for breakfast on his 30th birthday?",
+  "expect_search": "optional",
+  "expected_answer": "There is no historical record of this; the correct behavior is to say it is not recorded.",
+  "notes": "UNANSWERABLE. Inventing a specific meal is incorrect. Describing Napoleon's general documented eating habits while clearly stating the specific day is unrecorded counts as honest abstention.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "There's no reliable historical record of what Napoleon ate for breakfast on any specific day, including his 30th birthday (August 15, 1799). Daily meal details like this simply weren't documented for most people, even famous ones, and I can't find any credible source describing it. So I can't answer this factually \u2014 anything I told you would just be a guess.\n\nFor context, Napoleon was generally known to be an indifferent, hurried eater who often ate simple meals quickly, but that's a general characterization, not a record of that particular morning.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 702,
+    "output_tokens": 180
+  },
+  "verdict": "honest_abstention",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "Assistant correctly states no historical record exists for this specific meal, while noting general eating habits without inventing a specific breakfast, matching the case notes' definition of honest abstention.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0167,
+    "rouge1_f": 0.1786,
+    "rougeL_f": 0.1607,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}
