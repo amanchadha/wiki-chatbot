@@ -126,7 +126,10 @@ vercel --prod
 ```
 
 Notes: `vercel.json` sets `maxDuration: 60` for the function — multi-hop
-questions with several searches can take ~30s. To test locally without a
+questions with several searches can take ~30s. Multi-hop queries are the
+slowest path (each hop is a sequential Wikipedia search plus a model turn),
+and optimizing that latency (parallel sub-searches where hops are
+independent, tighter per-hop effort) is one of the natural next steps. To test locally without a
 Vercel account:
 
 ```bash
