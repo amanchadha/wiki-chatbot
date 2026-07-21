@@ -126,7 +126,7 @@ vercel --prod
 ```
 
 Notes: `vercel.json` sets `maxDuration: 60` for the function — multi-hop
-questions with several searches can take ~15s. To test locally without a
+questions with several searches can take ~30s. To test locally without a
 Vercel account:
 
 ```bash
