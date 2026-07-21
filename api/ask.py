@@ -19,7 +19,22 @@ MAX_QUESTION_CHARS = 500
 TOOL_PREVIEW_CHARS = 600
 
 
+INDEX_HTML = Path(__file__).resolve().parent.parent / "index.html"
+
+
 class handler(BaseHTTPRequestHandler):
+    def do_GET(self):  # noqa: N802 — Vercel's Python app mode routes ALL paths here
+        if self.path.split("?")[0] in ("/", "/index.html"):
+            body = INDEX_HTML.read_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
+        else:
+            self.send_response(404)
+            self.end_headers()
+
     def do_POST(self):  # noqa: N802 (Vercel expects this name/casing)
         try:
             length = int(self.headers.get("content-length") or 0)

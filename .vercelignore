@@ -1,0 +1,14 @@
+# Deploy only what the demo needs: index.html, api/, and the agent modules
+# it imports (agent.py, prompts.py, wikipedia.py) + requirements.txt.
+# Everything else would otherwise be served as public static files.
+*
+!index.html
+!api
+!api/ask.py
+!agent.py
+!prompts.py
+!wikipedia.py
+!requirements.txt
+!vercel.json
+!pyproject.toml
+!api/__init__.py
