@@ -9,3 +9,6 @@ Wikipedia-linked citations.
 Note: multi-hop queries currently take up to ~30s (each hop is a
 sequential, rate-limit-throttled live Wikipedia search); optimizing
 latency is one of the planned next steps.
+
+Note: multi-hop queries take ~30s (sequential per-hop searches plus
+rate-limit throttling); latency optimization is a planned next step.
