@@ -1,0 +1,31 @@
+{
+  "id": "n06",
+  "category": "no_search",
+  "question": "What's the difference between 'affect' and 'effect'?",
+  "expect_search": false,
+  "expected_answer": "Affect is usually a verb meaning to influence; effect is usually a noun meaning the result.",
+  "notes": "Mentioning the main verb/noun distinction is sufficient for correct; covering rarer senses (effect as verb, affect as noun) is a bonus, not required.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "\"Affect\" and \"effect\" are commonly confused because they sound similar, but they usually play different grammatical roles:\n\n**Affect** \u2014 usually a *verb* meaning \"to influence\" or \"to have an impact on.\"\n- *The weather can affect your mood.*\n- *The medication affected her appetite.*\n\n**Effect** \u2014 usually a *noun* meaning \"a result\" or \"consequence.\"\n- *The medication had a noticeable effect.*\n- *We're studying the effects of climate change.*\n\n**A memory trick:** Think **A** = **A**ction (affect is usually the action/verb), and **E** = **E**nd result (effect is usually the noun/result). Or remember **RAVEN**: **R**emember, **A**ffect **V**erb, **E**ffect **N**oun.\n\n**The tricky exceptions:**\n- **Effect** can be a verb meaning \"to bring about\" \u2014 *The new manager effected sweeping changes.* (i.e., caused them to happen)\n- **Affect** can be a noun in psychology, meaning an observed emotional expression \u2014 *The patient displayed a flat affect.*\n\nFor everyday writing, the verb/noun rule (affect = verb, effect = noun) will steer you right the vast majority of the time.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 92,
+    "output_tokens": 400
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "No search was needed for this general-knowledge grammar question; the answer correctly states affect=verb (to influence), effect=noun (result), matching the expected answer, plus accurate bonus exceptions.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0115,
+    "rouge1_f": 0.1778,
+    "rougeL_f": 0.1556,
+    "bertscore_f1": null,
+    "moverscore": null
+  },
+  "unsupported_side_claims": []
+}

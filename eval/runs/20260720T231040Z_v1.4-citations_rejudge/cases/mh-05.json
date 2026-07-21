@@ -1,0 +1,38 @@
+{
+  "id": "mh-05",
+  "category": "multi_hop",
+  "question": "In which U.S. state was the man born after whom the town of Longyearbyen is named?",
+  "expect_search": true,
+  "min_searches": 1,
+  "expected_answer": "Michigan \u2014 Longyearbyen is named after John Munro Longyear, born in Lansing, Michigan.",
+  "notes": "Obscure intermediate: John Munro Longyear. The obscure verify-required fact is his birthplace; the namesake identity is stable and may come from memory, so a single direct search of his article legitimately completes the chain (min_searches recalibrated 2->1 after the multi-hop baseline). Grade the state against retrieved evidence.",
+  "searched": true,
+  "queries": [
+    "John Munroe Longyear"
+  ],
+  "tool_results": [
+    "Search result snippets (matched text):\n- John Munro Longyear: ...his mother, Longyear was reportedly the great-great-great-grandchild of the Scottish American soldier William Munroe. In young life Longyear suffered various...\n- Arctic Coal Company: ...associate Frederick Ayer, Longyear bought the Norwegian claims on the west side of Adventfjorden, installed William D. Munroe as general manager, and expanded...\n- Mount Hope Cemetery (Lansing, Michigan): ...H. Kelley (1867\u20131925), member of the U.S. House of Representatives John W. Longyear (1820\u20131875), jurist and member of the U.S. House of Representatives...\n\n# John Munro Longyear\n\nJohn Munro Longyear Sr. (April 15, 1850 \u2013 May 28, 1922) was an American businessman and noted developer of timber and mineral lands in the Upper Peninsula of Michigan and Minnesota who became the central figure behind the Arctic Coal Company, which surveyed and mined coalfields on Spitsbergen, from 1905 to 1916. This company developed a settlement on Spitsbergen able to accommodate up to around 500 people which became known as Longyear City, now Longyearbyen, adjacent Advent Bay.\n\n\n== Biography ==\nLongyear was born in Lansing, Michigan, on April 15, 1850, the son of U.S. Congressman John Wesley Longyear (1820\u20131875) and Harriet Longyear (n\u00e9e Harriet Munro, 1826\u20131917). He had two brothers, Howard and James, and a sister Ida and possibly other siblings. Through his mother, Longyear was reportedly the great-great-great-grandchild of the Scottish American soldier William Munroe. In young life Longyear suffered various health problems and was prone to exhaustion.\nIn 1873, when he was 23, Longyear moved to Marquette, Michigan, and for over 20 years established himself as an expert in identifying iron ore properties for mines. One of the mines he was involved with in Iron Mountain, Michigan, became one of the largest underground mines in the United States. He was one of the founders, c. 1890, of the Huron Mountain Club near Big Bay, Michigan, and also served as its first president. In 1906, he founded the Arctic Coal Company with long-time associate Frederick Ayer and several other small shareholders. Longyear was the main owner of the Arctic Coal Company with headquarters in Boston, Massachusetts. Longyear had visited Svalbard in 1901, and bought the Trondhjem Spitsbergen Kulkompani in 1906.\nStore Norske Spitsbergen Kulkompani started as a consortium of Norwegian investors in 1916. It purchased Arctic Coal Company's and Ayer and Longyear's lands and operations on Spitsbergen in that year. They went on to develop major coal-mining operations in the Advent Valley region and at Sveagruva, originally a Swedish coal-mining operation.\n\n\n== Personal life ==\nHis passport application, dated 1895, describes Longyear, then 45 years old, as 6 feet 0 inches (1.83 m) tall with black and grey hair and brownish grey eyes.\nLongyear married Mary Beecher Longyear (n\u00e9e Mary Hawley Beecher, 1851\u20131931) on January 4, 1879, in Battle Creek, Michigan. Mary was a Christian Scientist and a philanthropist, perhaps best known for her involvement in the publication of the first braille version of the King James Bible. The couple had seven children together: Judith F. Longyear, Robert D. Longyear, Howard M. Longyear, Abby B. Roberts, Helen M. Paul, John B. Longyear, and John M. Longyear Jr. Some sources list the Longyears as having only five children but this discrepancy is likely due to that Howard and John died young, Howard M. Longyear at 20 and John B. Longyear as a toddler. For some years, the family was accompanied by a nurse, a young German woman named Angela Nerling, who both lived and traveled with them.\nIn the early 20th century, Longyear made the decision to move from Michigan, where his family lived in a stone mansion on the shores of Lake Superior, to Massachusetts. His wife Mary was reportedly unsettled by the idea of leaving the family's home, and so, Longyear arranged for the home to be dismantled and transported 1,300 miles across the country by railroad to their new hometown and reassembled there in 1903. Longyear lived out the rest of his life in Brookline, Massachusetts. He died at his home there on May 28, 1922.\n\n\n== Legacy ==\nPlaces named after Longyear include Longyearbyen, Longyear River, and Longyear Valley in Svalbard; the Longyear Hall of Pedagogy at the Northern Michigan University; the Longyear Building in Marquette, Michigan; and the J. M. Longyear Research Library at the Marquette Regional History Center.\nIn 2005, Longyear was inducted into the National Mining Hall of Fame.\n\n\n== References ==\n\n\n== Further reading ==\nDole, N. (1922). America in Spitsbergen, The Romance of an Arctic Coal-Mine. Boston: Marshall-Jones Company.\nHartnell, Cameron C. (2009). Arctic Network Builders: the Arctic Coal Company's Operations on Spitsbergen and its Relationship with the Environment (Thesis). Michigan Technological University.\n\n\n== External links ==\n\nWorks by or about John Munro Longyear at the Internet Archive\nAbout Mary and John Longyear Longyear Museum\nScenes from Svalbard (former Spitzbergen), including Longyearbyen: Photo essay 4/2014\n\nInfobox of 'John Munro Longyear' (structured facts \u2014 populations, dates, roles, spouses often appear only here):\n| name               = John Munro Longyear\n| image              = John Munro Longyear Marquette MI.JPG\n| birth_date         = Birth date|1850|4|15\n| birth_place        = Lansing, Michigan, U.S.\n| death_date         = Death date and age|1922|5|28|1850|4|15\n| death_place        = Brookline, Massachusetts, U.S.\n| spouse             = Marriage|Mary Beecher Longyear|January 4, 1879\n| children           = 7\n| relatives          = John W. Longyear (father)\n| signature          = Signature of John Munro Longyear, Sr.png\n\nOther matching articles (search again with one of these titles if this is the wrong page): Arctic Coal Company, Mount Hope Cemetery (Lansing, Michigan)"
+  ],
+  "answer": "Longyearbyen is named after John Munro Longyear, who was born in Lansing, **Michigan**.\u00b9\n\n\u00b9 John Munro Longyear \u2014 Wikipedia",
+  "num_turns": 2,
+  "usage": {
+    "input_tokens": 2519,
+    "output_tokens": 155
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "sufficient",
+  "right_article": "yes",
+  "faithfulness": "faithful",
+  "reason": "The retrieved John Munro Longyear article states he was born in Lansing, Michigan, matching the expected answer exactly, and the answer is properly cited.",
+  "citation_coverage": "complete",
+  "citation_support": "supported",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.3616,
+    "rouge1_f": 0.7586,
+    "rougeL_f": 0.7586,
+    "bertscore_f1": null,
+    "moverscore": null
+  },
+  "unsupported_side_claims": []
+}

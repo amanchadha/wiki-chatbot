@@ -1,0 +1,33 @@
+{
+  "id": "d02",
+  "category": "disambiguation",
+  "question": "How hot does the surface of Mercury get?",
+  "expect_search": "optional",
+  "expected_answer": "The planet Mercury's daytime surface reaches about 430 degrees Celsius, roughly 800 degrees Fahrenheit.",
+  "notes": "Accept 420-450 C. Must be about the planet, not the element or anything else. The model plausibly knows this from memory, so search is optional; if it searches, the right article is the planet.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "The surface of Mercury reaches roughly **430 \u00b0C (about 800 \u00b0F)** at its hottest, on the daytime side facing the Sun. Because Mercury has almost no atmosphere to retain heat, its night side plunges to about **\u2212180 \u00b0C (\u2212290 \u00b0F)**, giving it one of the largest surface temperature swings in the Solar System.\n\n(These are well-established astronomical figures given from general knowledge, not from a verified search this session.)",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 88,
+    "output_tokens": 202
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "Answer states 430\u00b0C/800\u00b0F for daytime Mercury surface, matching expected value within tolerance; no search was performed but the answer is clearly labeled as from memory, which is acceptable per case notes.",
+  "citation_coverage": "not_applicable",
+  "citation_support": "no_citations",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0071,
+    "rouge1_f": 0.2118,
+    "rougeL_f": 0.1176,
+    "bertscore_f1": null,
+    "moverscore": null
+  },
+  "unsupported_side_claims": []
+}

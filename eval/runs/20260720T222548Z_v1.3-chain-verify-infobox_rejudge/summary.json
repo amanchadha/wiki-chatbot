@@ -1,0 +1,44 @@
+{
+  "timestamp": "20260720T222548Z",
+  "prompt_version": "v1.3-chain-verify-infobox",
+  "mode": "default",
+  "rejudged_from": "20260719T214752Z_v1.3-chain-verify-infobox",
+  "agent_model": "claude-opus-4-8",
+  "judge_model": "claude-sonnet-5",
+  "judge_version": "judge-v4",
+  "n_cases": 40,
+  "n_errors": 0,
+  "pass_rate": 1.0,
+  "pass_rate_by_category": {
+    "disambiguation": "4/4",
+    "multi_hop": "8/8",
+    "no_search": "8/8",
+    "optional_search": "4/4",
+    "retrieval_required": "12/12",
+    "unanswerable": "4/4"
+  },
+  "search_recall": 0.955,
+  "search_precision": 1.0,
+  "spurious_searches": [],
+  "missed_searches": [
+    "r08"
+  ],
+  "n_searched_cases": 21,
+  "evidence_sufficiency_rate": 0.952,
+  "right_article_rate": 1.0,
+  "unfaithful_ids": [],
+  "tool_calls": 26,
+  "tool_errors": 0,
+  "tool_error_rate": 0.0,
+  "multi_hop_underchained": [],
+  "mean_searches_multi_hop": 1.5,
+  "answers_with_unsupported_side_claims": "1/21",
+  "unsupported_side_claim_ids": [
+    "mh-04"
+  ],
+  "unsupported_side_claims_total": 1,
+  "abstained_on_unanswerable": "3/4",
+  "wrong_abstention_ids": [],
+  "failed_ids": [],
+  "error_ids": []
+}

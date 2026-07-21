@@ -1,0 +1,31 @@
+{
+  "id": "n01",
+  "category": "no_search",
+  "question": "What is 289 divided by 17?",
+  "expect_search": false,
+  "expected_answer": "17",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "289 divided by 17 is **17** (since 17 \u00d7 17 = 289).",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 85,
+    "output_tokens": 27
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "This is a simple arithmetic question not requiring search; 17*17=289 is correct and matches the expected answer.",
+  "citation_coverage": "not_applicable",
+  "citation_support": "no_citations",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0202,
+    "rouge1_f": 0.1818,
+    "rougeL_f": 0.1818,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "n02",
+  "category": "no_search",
+  "question": "What does the word 'ubiquitous' mean?",
+  "expect_search": false,
+  "expected_answer": "Present or found everywhere; very common or widespread.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "\"Ubiquitous\" means present, appearing, or found everywhere at the same time. It describes something that seems to be everywhere simultaneously or is very common and widespread.\n\nFor example, you might say \"smartphones have become ubiquitous in modern life,\" meaning they're found virtually everywhere.\n\nThe word comes from the Latin *ubique*, meaning \"everywhere.\"",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 90,
+    "output_tokens": 120
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "The answer correctly defines 'ubiquitous' as present or found everywhere, matching the expected definition; this is a general-knowledge dictionary question not requiring search.",
+  "citation_coverage": "not_applicable",
+  "citation_support": "no_citations",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0296,
+    "rouge1_f": 0.2623,
+    "rougeL_f": 0.2295,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

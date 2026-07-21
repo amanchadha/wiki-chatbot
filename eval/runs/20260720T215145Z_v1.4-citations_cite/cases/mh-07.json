@@ -1,0 +1,33 @@
+{
+  "id": "mh-07",
+  "category": "multi_hop",
+  "question": "What is the capital of the country that gained independence from joint British-French colonial rule in 1980?",
+  "expect_search": "optional",
+  "min_searches": 1,
+  "expected_answer": "Port Vila, the capital of Vanuatu.",
+  "notes": "Reverse chain: 1980 joint British-French independence -> Vanuatu -> Port Vila. Both hops are stable facts the model may know; searching is optional but the identification must be Vanuatu / Port Vila.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "The country is Vanuatu (formerly the New Hebrides), which gained independence from joint British-French colonial rule in 1980. Its capital is **Port Vila**.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 103,
+    "output_tokens": 117
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "No search was issued, but the assistant correctly identified Vanuatu as the country and Port Vila as its capital, matching the expected answer exactly.",
+  "citation_coverage": "not_applicable",
+  "citation_support": "no_citations",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0317,
+    "rouge1_f": 0.3333,
+    "rougeL_f": 0.1333,
+    "bertscore_f1": null,
+    "moverscore": null
+  }
+}

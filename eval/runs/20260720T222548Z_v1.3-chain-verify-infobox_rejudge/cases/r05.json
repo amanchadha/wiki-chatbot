@@ -1,0 +1,34 @@
+{
+  "id": "r05",
+  "category": "retrieval_required",
+  "question": "Who won the 2024 Booker Prize, and for which novel?",
+  "expect_search": true,
+  "expected_answer": "Samantha Harvey, for the novel Orbital.",
+  "searched": true,
+  "queries": [
+    "2024 Booker Prize"
+  ],
+  "tool_results": [
+    "Search result snippets (matched text):\n- 2024 Booker Prize: ...Prize. 12 November 2024. \"Meet the Booker Prize 2024 judges: 'The Booker is the Olympic gold medal of book awards' | The Booker Prizes\". thebookerprizes...\n- Booker Prize: ...appointed by the Booker Prize Foundation each year to choose the winning book. Gaby Wood has been the chief executive of the Booker Prize Foundation since...\n- List of winners and nominated authors of the Booker Prize: ...public vote in 2008, on the prize's fortieth anniversary, for \"The Best of the Booker\". In 2018 a special \"Golden Booker\" was awarded celebrating 50 years...\n\n# 2024 Booker Prize\n\nThe 2024 Booker Prize is a literary award worth \u00a350,000 given for the best English-language novel published between 1 October 2023 and 30 September 2024 in either the United Kingdom or Ireland. The winner, Samantha Harvey for her sci-fi novel Orbital, was announced on 12 November 2024 at Old Billingsgate in London.\nOf the thirteen authors on the 2024 longlist, announced on 30 July 2024, three (Colin Barrett, Rita Bullwinkel, Yael van der Wouden) were debut novelists and six (Percival Everett, Samantha Harvey, Rachel Kushner, Hisham Matar, Claire Messud, Richard Powers) had been nominated previously. The longlist also featured the first Dutch (van der Wouden) and Native American (Tommy Orange) authors ever to be longlisted. Regarding the thirteen novels in the longlist, chair of the judging panel Edmund de Waal stated that the works varied widely in their style and mood, however he stated the works had a common feature exploring the precarious lives of their characters. He stated: \"The precarity of lives runs through our longlist like quicksilver.\"\nThe shortlist of six finalists was announced on 16 September 2024, with five of the six books being by female authors, the highest number of women shortlisted in the 55-year history of the prize. Harvey had previously been nominated for a Booker Prize when her 2009 debut novel The Wilderness was longlisted for the award. At 136 pages, Orbital was the second shortest novel to be awarded a Booker Prize (with the shortest novel being Penelope Fitzgerald's 1979 winning work Offshore). Orbital was the first novel set in space to win the Booker Prize.\nEdmund de Waal stated regarding Harvey: \"With her language of lyricism and acuity Harvey makes our world strange and new for us.\" de Waal also stated that the novel showed the beauty of the world we all share as well as its fragility.\nDuring her acceptance speech, Harvey dedicated her award to those who \"speak for and not against the Earth, for and not against the dignity of other humans, other life, and all the people who speak for, and call for, and work for peace\".\n\n\n== Judging panel ==\nEdmund de Waal (chair)\nSara Collins\nJustine Jordan\nNitin Sawhney\nYiyun Li\n\n\n== Nominees ==\nAll 2024 nominees are novels.\n\n\n== See also ==\nList of winners and nominated authors of the Booker Prize\n\n\n== References ==\n\nInfobox of '2024 Booker Prize' (structured facts \u2014 populations, dates, roles, spouses often appear only here):\n| name             = 2024 Booker Prize\n| date             = 12 November 2024\n| location         = Old Billingsgate, London\n| country          = United Kingdom & Ireland\n| previous         = 2023\n| next             = 2025\n| main             = nowrap|The Booker Prize\n\nOther matching articles (search again with one of these titles if this is the wrong page): Booker Prize, List of winners and nominated authors of the Booker Prize"
+  ],
+  "answer": "The 2024 Booker Prize was won by **Samantha Harvey** for her novel **Orbital**, announced on 12 November 2024. It was the first novel set in space to win the prize.",
+  "num_turns": 2,
+  "usage": {
+    "input_tokens": 1533,
+    "output_tokens": 133
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "sufficient",
+  "right_article": "yes",
+  "faithfulness": "faithful",
+  "reason": "Answer matches expected: Samantha Harvey won for Orbital; retrieved article confirms this and also confirms the 'first novel set in space' detail, so no unsupported claims.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0253,
+    "rouge1_f": 0.3333,
+    "rougeL_f": 0.2778,
+    "bertscore_f1": null,
+    "moverscore": null
+  },
+  "unsupported_side_claims": []
+}

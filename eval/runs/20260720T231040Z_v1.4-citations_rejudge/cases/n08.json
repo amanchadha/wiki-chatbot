@@ -1,0 +1,33 @@
+{
+  "id": "n08",
+  "category": "no_search",
+  "question": "Convert 100 degrees Fahrenheit to Celsius.",
+  "expect_search": false,
+  "expected_answer": "About 37.8 degrees Celsius.",
+  "notes": "Accept 37.7-37.8, or 'roughly 38'.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "100\u00b0F = (100 \u2212 32) \u00d7 5/9 \u2248 **37.78\u00b0C**",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 96,
+    "output_tokens": 57
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "This is a simple math conversion, no search needed; 37.78\u00b0C is correct and matches the accepted tolerance (37.7-37.8).",
+  "citation_coverage": "not_applicable",
+  "citation_support": "no_citations",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0,
+    "rouge1_f": 0.1429,
+    "rougeL_f": 0.1429,
+    "bertscore_f1": null,
+    "moverscore": null
+  },
+  "unsupported_side_claims": []
+}

@@ -1,0 +1,32 @@
+{
+  "id": "o02",
+  "category": "optional_search",
+  "question": "Who painted the Mona Lisa?",
+  "expect_search": "optional",
+  "expected_answer": "Leonardo da Vinci",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "The Mona Lisa was painted by Leonardo da Vinci, the Italian Renaissance artist. This is well-established common knowledge, so no search is needed.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 87,
+    "output_tokens": 55
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "The assistant correctly identified Leonardo da Vinci as the painter, matching the expected answer; no search was needed for this common-knowledge fact.",
+  "citation_coverage": "not_applicable",
+  "citation_support": "no_citations",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0517,
+    "rouge1_f": 0.2222,
+    "rougeL_f": 0.2222,
+    "bertscore_f1": null,
+    "moverscore": null
+  },
+  "unsupported_side_claims": []
+}

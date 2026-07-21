@@ -1,0 +1,31 @@
+{
+  "id": "n03",
+  "category": "no_search",
+  "question": "Write a short haiku about autumn.",
+  "expect_search": false,
+  "expected_answer": "An original three-line haiku about autumn, roughly 5-7-5 form.",
+  "notes": "Grade correct if the output is a plausible haiku on the topic. Lexical-overlap metrics are expected to be meaningless on this case; that is intentional.",
+  "searched": false,
+  "queries": [],
+  "tool_results": [],
+  "answer": "Crisp leaves drift and fall,\nAmber light through fading trees\u2014\nAutumn whispers cool.",
+  "num_turns": 1,
+  "usage": {
+    "input_tokens": 86,
+    "output_tokens": 37
+  },
+  "verdict": "correct",
+  "evidence_sufficiency": "not_searched",
+  "right_article": "not_searched",
+  "faithfulness": "not_searched",
+  "reason": "The assistant produced an original three-line haiku with a valid 5-7-5 syllable structure on the topic of autumn, satisfying the creative writing task; no search was needed or performed.",
+  "passed": true,
+  "lexical": {
+    "bleu": 0.0313,
+    "rouge1_f": 0.08,
+    "rougeL_f": 0.08,
+    "bertscore_f1": null,
+    "moverscore": null
+  },
+  "unsupported_side_claims": []
+}
