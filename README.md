@@ -1,5 +1,8 @@
 # Wiki Chatbot
 
+**Live demo: <https://wiki-chatbot-pi.vercel.app>** — click a sample chip to
+see each behavior with its full search trace.
+
 A question-answering system built on Claude with a `search_wikipedia` tool.
 Claude decides per-question whether retrieval is needed, chains searches for
 multi-hop questions, and grounds answers in retrieved evidence. An eval suite
@@ -55,6 +58,8 @@ disambiguation → multi-hop chains → unanswerable — so the system's breadth
 of behavior is demonstrable in one glance. Click any chip to run it live.
 
 ## Web demo (Vercel)
+
+**Hosted at <https://wiki-chatbot-pi.vercel.app>.**
 
 A minimal single-page demo (`index.html` + `api/ask.py`) that shows the
 answer **and the full search trace** — every query issued with an expandable
