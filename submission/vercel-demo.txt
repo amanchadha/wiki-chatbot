@@ -1,0 +1,7 @@
+Live hosted demo (Vercel, citation mode on):
+https://wiki-chatbot-pi.vercel.app
+
+Click any sample chip — each shows a different behavior class (direct
+answer, optional lookup, single-hop retrieval, disambiguation, multi-hop
+chain, false premise, unanswerable) with the full search trace and
+Wikipedia-linked citations.

@@ -1,0 +1,4 @@
+Design rationale (Google Doc):
+https://docs.google.com/document/d/1EAf21g-IICuA3kBZsVTRqYGey9EhPdQ9oH9UWBcaCqU/edit?tab=t.0
+
+(Also checked into the repo as RATIONALE.md / RATIONALE.docx)

@@ -1,0 +1,17 @@
+Setup (Python 3.9+):
+  pip install -r requirements.txt
+  export ANTHROPIC_API_KEY=sk-ant-...
+
+Demo mode — runs one sample per behavior class, with category headers,
+ordered by query complexity:
+  python cli.py --demo
+  python cli.py --cite --demo        # same, with inline citations
+
+Individual sample queries:
+  python cli.py "Who is the current president of Botswana?"
+  python cli.py "Who founded Mercury Records?"
+  python cli.py --cite "What is the population of the city where the current Secretary General of NATO was born?"
+  python cli.py "What did Napoleon eat for breakfast on his 30th birthday?"
+
+Eval suite (writes summary + per-case transcripts to eval/runs/):
+  python eval/run.py
