@@ -5,7 +5,10 @@ should be a diff here (and only here). Keep a version label so eval runs
 can be tagged with the prompt they ran against.
 """
 
-PROMPT_VERSION = "v1.4-citations"
+# v1.5: claim-level citation placement (cite mode only) — markers go
+# directly after the specific claim (name/date/number), not collected at
+# sentence end. Default-mode prompt still byte-identical to v1.3.
+PROMPT_VERSION = "v1.5-claim-level-citations"
 
 SYSTEM_PROMPT = """\
 You are a helpful assistant that answers questions, with access to Wikipedia \
@@ -61,6 +64,14 @@ CITATION_INSTRUCTIONS = """\
 CITATION MODE IS ON. Cite your sources:
 - Immediately after each atomic factual claim that comes from retrieved \
 Wikipedia text, put a superscript marker (¹ ² ³ ...).
+- Place each marker directly after the specific claim it supports — right \
+after the name, date, number, or phrase, even mid-sentence — NOT collected \
+at the end of the sentence. A sentence with two retrieved facts carries two \
+markers.
+  Right: "The current president is Duma Boko¹, who took office on \
+1 November 2024¹."
+  Wrong: "The current president is Duma Boko, who took office on \
+1 November 2024.¹"
 - End the answer with a source list, one line per marker, e.g.:
   ¹ Kobdilj — Wikipedia
 - A citation is a guarantee: "this fact appears in that article's text \
