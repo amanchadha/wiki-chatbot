@@ -51,7 +51,10 @@ class handler(BaseHTTPRequestHandler):
             )
 
         try:
-            result = answer(question)
+            # Citation mode on: hosted answers carry inline superscript
+            # markers on retrieved-text claims plus a source list, so the
+            # provenance guarantee is visible in the public demo.
+            result = answer(question, cite=True)
         except Exception as e:  # surface as JSON, not a 500 HTML page
             return self._send(500, {"error": f"{type(e).__name__}: {e}"})
 
