@@ -23,44 +23,44 @@ unchanged; cost ≈ +6% input / +12% output tokens.
 
 ## Features
 
-- **Calibrated search decision** — Claude decides per question whether to
+- **Calibrated search decision**: Claude decides per question whether to
   hit Wikipedia, keyed on the *kind* of fact (volatile / count / named
   specific) rather than its own confidence. Search precision 1.0 on every
   run of the project; recall 0.96 on the final config.
-- **Multi-hop chaining** — chained searches for questions like "the
+- **Multi-hop chaining**: chained searches for questions like "the
   population of the city where the NATO Secretary General was born," with
   per-hop verification (no back-filling later hops from memory). 8/8 on the
   multi-hop eval category, including memory-proof intermediates.
-- **Citation mode (`--cite`)** — inline superscript markers attached to each
+- **Citation mode (`--cite`)**: inline superscript markers attached to each
   atomic claim (comma-separated when one claim has multiple sources) plus a
   source list linking to the exact Wikipedia articles. A citation is a
   guarantee: it appears only on claims present in retrieved text; memory
   answers stay unmarked. Zero invented citations on the eval baseline, and
   the citation requirement measurably suppresses unverified side details.
-- **Evidence-grounded answers** — after searching, the answer must come from
+- **Evidence-grounded answers**: after searching, the answer must come from
   the retrieved text: re-query on a miss, or say the search didn't confirm
   it. Zero faithfulness violations in the final config.
-- **Honest abstention** — unanswerable questions (unrecorded history, the
+- **Honest abstention**: unanswerable questions (unrecorded history, the
   future, private information) and dead-end chains get "that isn't
   recorded," not a guess; false premises get rejected, not answered.
-- **Disambiguation recovery** — ambiguous entities (Mercury Records vs the
+- **Disambiguation recovery**: ambiguous entities (Mercury Records vs the
   planet, Odessa TX vs Odesa UA) resolve to the right article (1.0
   right-article rate), with alternate titles surfaced for follow-up.
-- **Hardened retrieval** — search snippets and infobox fields augment the
+- **Hardened retrieval**: search snippets and infobox fields augment the
   plain-text extract (tables and infoboxes are stripped from extracts, and
   that's where award winners and populations live); process-wide throttling
   with 429/503 exponential backoff; graceful outage fallback (labeled
   unverified answers for stable facts, no guessing on volatile ones).
-- **Transparent search traces** — every surface shows each query issued and
+- **Transparent search traces**: every surface shows each query issued and
   the tool result (or an explicit "no search" line); the trace metadata
   feeds the eval directly.
-- **Eval suite as the feedback signal** — 40 cases across six categories
+- **Eval suite as the feedback signal**: 40 cases across six categories
   graded on three dimensions (search decision in code; retrieval and answer
   quality via an LLM judge on a *different* model to avoid self-grading
   bias), per-case transcripts for every run, versioned judge with a
   `--rejudge` replay mode, code-level tool-error tracking, and a
   side-claims hallucination rubric.
-- **Four demo surfaces** — CLI (one-shot / interactive / categorized
+- **Four demo surfaces**: CLI (one-shot / interactive / categorized
   `--demo`), stdlib-only local web UI, a Vercel-hosted public demo running
   citation mode, and a local shim that serves the exact Vercel code path.
 
