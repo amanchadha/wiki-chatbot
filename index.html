@@ -131,7 +131,7 @@ async function ask() {
   $("answerCard").hidden = true; $("traceCard").hidden = true;
   $("status").hidden = false;
   $("status").className = "";
-  $("status").textContent = "Thinking… (searches can take up to ~30s)";
+  $("status").textContent = "Thinking… (searches can take up to ~15s)";
   try {
     const resp = await fetch("/api/ask", {
       method: "POST",
