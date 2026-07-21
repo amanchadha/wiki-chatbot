@@ -82,6 +82,30 @@ whether the final answer passed. Every case was graded across three stages:
 - **Answer quality:** The judge evaluates overall correctness, faithfulness
   to the retrieved evidence, and whether abstention was appropriate.
 
+Tracked metrics: every run's `summary.json` records, per dimension:
+
+- **Search decision:** search recall and precision, spurious and missed
+  search ids, multi-hop under-chaining, and mean searches per case (overall
+  and multi-hop).
+- **Retrieval quality:** evidence-sufficiency rate, right-article rate, and
+  code-counted tool calls/errors (tool_error_rate), so infrastructure
+  failures never masquerade as retrieval failures.
+- **Answer quality:** pass rate overall and per category; verdicts
+  (correct / partially_correct / incorrect / honest_abstention);
+  **faithfulness (groundedness)**, i.e., whether the key claim is supported
+  by the retrieved evidence rather than model memory; unsupported side
+  claims (the hallucination rubric: rate and total count of specific
+  details asserted beyond the evidence); and abstention in both directions
+  (abstained-on-unanswerable, wrong abstentions).
+- **Citations (cite mode):** citation coverage (complete/partial/uncited)
+  and citation integrity (invented and misattributed citation ids).
+- **Cost:** total input/output tokens per run.
+- **Experimental sidecar:** per-case BLEU/ROUGE/BERTScore (BLEU and ROUGE
+  dropped after the agreement analysis below; BERTScore deferred).
+
+Every summary row carries `prompt_version` and `judge_version`, so metric
+movements are attributable to a specific prompt or grading change.
+
 Case design choices that mattered:
 
 - **Stale-memory traps:** Cases involving officeholders and CEOs who changed

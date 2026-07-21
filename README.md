@@ -217,6 +217,30 @@ Every failure decomposes along the chain: wrong + no search = decision
 failure; wrong + search + insufficient evidence = retrieval failure; wrong +
 sufficient evidence = generation failure. That triage drove each iteration.
 
+### Tracked metrics (per run, in `summary.json`)
+
+| Dimension | Metric | What it measures |
+|---|---|---|
+| Search decision | `search_recall` | Share of must-search cases that actually searched |
+| Search decision | `search_precision` | Share of searches issued on cases where searching is justified |
+| Search decision | `spurious_searches` / `missed_searches` | Case ids behind each precision/recall miss |
+| Search decision | `multi_hop_underchained` | Multi-hop cases issuing fewer searches than their chain requires |
+| Search decision | `mean_searches_per_case` / `mean_searches_multi_hop` | Search-volume cost of the decision policy |
+| Retrieval | `evidence_sufficiency_rate` | Searched cases whose tool results actually contain the needed fact |
+| Retrieval | `right_article_rate` | Searched cases where retrieval landed on the intended article |
+| Retrieval | `tool_calls` / `tool_errors` / `tool_error_rate` | Code-counted infra failures, kept separate from judged retrieval quality |
+| Answer quality | `pass_rate` (+ per category) | Verdict `correct`, or `honest_abstention` where abstention is the right behavior |
+| Answer quality | **faithfulness / groundedness** (`unfaithful_ids`) | Whether the answer's key claim is supported by the retrieved evidence rather than model memory |
+| Answer quality | `answers_with_unsupported_side_claims` / `unsupported_side_claims_total` | Hallucinated side details: specific claims beyond the key claim with no evidence support |
+| Answer quality | `abstained_on_unanswerable` / `wrong_abstention_ids` | Honesty in both directions: abstains when it should, never when it shouldn't |
+| Citations (cite mode) | `citation_coverage_complete_rate` (+ `partial` / `uncited` ids) | Whether every retrieved-text claim carries a marker |
+| Citations (cite mode) | `invented_citation_ids` / `misattributed_citation_ids` | Citation integrity: a marker on a memory claim, or pointing at the wrong article |
+| Cost | `total_tokens` | Input/output token spend for the run |
+| Experimental | BLEU / ROUGE / BERTScore (per case, sidecar) | Lexical/semantic overlap vs the reference; BLEU/ROUGE dropped after the agreement analysis, BERTScore deferred |
+
+Every row is tagged with `prompt_version` and `judge_version`, so metric
+movements are attributable to a specific prompt or grading change.
+
 ### Models
 
 - **Agent: `claude-opus-4-8`** — adaptive thinking, `effort: low`. The
