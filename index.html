@@ -150,8 +150,37 @@ async function ask() {
   }
 }
 
+// Source-list lines look like "¹ President of Botswana — Wikipedia".
+// Wikipedia URLs are deterministic from the title, so we linkify client-side
+// rather than having the model emit URLs (which could be mangled).
+const SRC_LINE = /^([¹²³⁰-⁹]+)\s+(.+)\s+[—–-]\s+Wikipedia\s*$/;
+
+function renderAnswer(text) {
+  const el = $("answer");
+  el.replaceChildren();
+  const lines = text.split("\n");
+  lines.forEach((line, idx) => {
+    const m = line.match(SRC_LINE);
+    if (m) {
+      const div = document.createElement("div");
+      div.appendChild(document.createTextNode(m[1] + " "));
+      const a = document.createElement("a");
+      a.href = "https://en.wikipedia.org/wiki/" +
+        encodeURIComponent(m[2].replace(/ /g, "_"));
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = m[2] + " — Wikipedia";
+      div.appendChild(a);
+      el.appendChild(div);
+    } else {
+      el.appendChild(document.createTextNode(line));
+      if (idx < lines.length - 1) el.appendChild(document.createElement("br"));
+    }
+  });
+}
+
 function render(data) {
-  $("answer").textContent = data.answer;
+  renderAnswer(data.answer);
   $("answerCard").hidden = false;
 
   const trace = $("trace");
