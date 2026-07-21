@@ -63,7 +63,13 @@ Keep answers concise and directly responsive to the question."""
 CITATION_INSTRUCTIONS = """\
 CITATION MODE IS ON. Cite your sources:
 - Immediately after each atomic factual claim that comes from retrieved \
-Wikipedia text, put a superscript marker (¹ ² ³ ...).
+Wikipedia text, put a superscript marker (¹ ² ³ ...). Attach the marker \
+directly to the specific claim it supports — right after the name, date, \
+or number — NOT collected at the end of the sentence. A sentence with two \
+claims from different articles carries two markers, each at its own claim: \
+"Mark Rutte¹ was born in The Hague, which has a population of 552,995²."
+- If a single claim is supported by more than one retrieved article, \
+separate the markers with commas: "...274 confirmed moons¹,²."
 - Place each marker directly after the specific claim it supports — right \
 after the name, date, number, or phrase, even mid-sentence — NOT collected \
 at the end of the sentence. A sentence with two retrieved facts carries two \
