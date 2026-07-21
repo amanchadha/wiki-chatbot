@@ -219,41 +219,45 @@ sufficient evidence = generation failure. That triage drove each iteration.
 
 ### Tracked metrics (per run, in `summary.json`), grouped by pipeline stage
 
-**Stage 1: search decision** (graded in code)
-
-| Metric | What it measures |
-|---|---|
-| `search_recall` | Share of must-search cases that actually searched |
-| `search_precision` | Share of searches issued on cases where searching is justified |
-| `spurious_searches` / `missed_searches` | Case ids behind each precision/recall miss |
-| `multi_hop_underchained` | Multi-hop cases issuing fewer searches than their chain requires |
-| `mean_searches_per_case` / `mean_searches_multi_hop` | Search-volume cost of the decision policy |
-
-**Stage 2: retrieval** (judged, with code-counted infra separation)
-
-| Metric | What it measures |
-|---|---|
-| `evidence_sufficiency_rate` | Searched cases whose tool results actually contain the needed fact |
-| `right_article_rate` | Searched cases where retrieval landed on the intended article |
-| `tool_calls` / `tool_errors` / `tool_error_rate` | Code-counted infra failures, kept separate from judged retrieval quality |
-
-**Stage 3: answer generation** (judged)
-
-| Metric | What it measures |
-|---|---|
-| `pass_rate` (+ per category) | Verdict `correct`, or `honest_abstention` where abstention is the right behavior |
-| **faithfulness / groundedness** (`unfaithful_ids`) | Whether the answer's key claim is supported by the retrieved evidence rather than model memory |
-| `answers_with_unsupported_side_claims` / `unsupported_side_claims_total` | Hallucinated side details: specific claims beyond the key claim with no evidence support |
-| `abstained_on_unanswerable` / `wrong_abstention_ids` | Honesty in both directions: abstains when it should, never when it shouldn't |
-| `citation_coverage_complete_rate` (+ `partial` / `uncited` ids) | Cite mode: whether every retrieved-text claim carries a marker |
-| `invented_citation_ids` / `misattributed_citation_ids` | Cite mode: citation integrity, i.e. a marker on a memory claim or pointing at the wrong article |
-
-**Run-level**
-
-| Metric | What it measures |
-|---|---|
-| `total_tokens` | Input/output token spend for the run |
-| BLEU / ROUGE / BERTScore (per case, sidecar) | Experimental lexical/semantic overlap vs the reference; BLEU/ROUGE dropped after the agreement analysis, BERTScore deferred |
+<table>
+  <tr><th>Stage</th><th>Metric</th><th>What it measures</th></tr>
+  <tr><td rowspan="5"><b>Stage 1: search decision</b><br>(graded in code)</td>
+      <td><code>search_recall</code></td>
+      <td>Share of must-search cases that actually searched</td></tr>
+  <tr><td><code>search_precision</code></td>
+      <td>Share of searches issued on cases where searching is justified</td></tr>
+  <tr><td><code>spurious_searches</code> / <code>missed_searches</code></td>
+      <td>Case ids behind each precision/recall miss</td></tr>
+  <tr><td><code>multi_hop_underchained</code></td>
+      <td>Multi-hop cases issuing fewer searches than their chain requires</td></tr>
+  <tr><td><code>mean_searches_per_case</code> / <code>mean_searches_multi_hop</code></td>
+      <td>Search-volume cost of the decision policy</td></tr>
+  <tr><td rowspan="3"><b>Stage 2: retrieval</b><br>(judged, with code-counted infra separation)</td>
+      <td><code>evidence_sufficiency_rate</code></td>
+      <td>Searched cases whose tool results actually contain the needed fact</td></tr>
+  <tr><td><code>right_article_rate</code></td>
+      <td>Searched cases where retrieval landed on the intended article</td></tr>
+  <tr><td><code>tool_calls</code> / <code>tool_errors</code> / <code>tool_error_rate</code></td>
+      <td>Code-counted infra failures, kept separate from judged retrieval quality</td></tr>
+  <tr><td rowspan="6"><b>Stage 3: answer generation</b><br>(judged)</td>
+      <td><code>pass_rate</code> (+ per category)</td>
+      <td>Verdict <code>correct</code>, or <code>honest_abstention</code> where abstention is the right behavior</td></tr>
+  <tr><td><b>faithfulness / groundedness</b> (<code>unfaithful_ids</code>)</td>
+      <td>Whether the answer's key claim is supported by the retrieved evidence rather than model memory</td></tr>
+  <tr><td><code>answers_with_unsupported_side_claims</code> / <code>unsupported_side_claims_total</code></td>
+      <td>Hallucinated side details: specific claims beyond the key claim with no evidence support</td></tr>
+  <tr><td><code>abstained_on_unanswerable</code> / <code>wrong_abstention_ids</code></td>
+      <td>Honesty in both directions: abstains when it should, never when it shouldn't</td></tr>
+  <tr><td><code>citation_coverage_complete_rate</code> (+ <code>partial</code> / <code>uncited</code> ids)</td>
+      <td>Cite mode: whether every retrieved-text claim carries a marker</td></tr>
+  <tr><td><code>invented_citation_ids</code> / <code>misattributed_citation_ids</code></td>
+      <td>Cite mode: citation integrity, i.e. a marker on a memory claim or pointing at the wrong article</td></tr>
+  <tr><td rowspan="2"><b>Run-level</b></td>
+      <td><code>total_tokens</code></td>
+      <td>Input/output token spend for the run</td></tr>
+  <tr><td>BLEU / ROUGE / BERTScore (per case, sidecar)</td>
+      <td>Experimental lexical/semantic overlap vs the reference; BLEU/ROUGE dropped after the agreement analysis, BERTScore deferred</td></tr>
+</table>
 
 Every row is tagged with `prompt_version` and `judge_version`, so metric
 movements are attributable to a specific prompt or grading change.
