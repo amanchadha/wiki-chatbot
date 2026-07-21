@@ -63,7 +63,10 @@ of behavior is demonstrable in one glance. Click any chip to run it live.
 
 A minimal single-page demo (`index.html` + `api/ask.py`) that shows the
 answer **and the full search trace** — every query issued with an expandable
-tool-result preview, or an explicit "no search" line. Sample-query chips
+tool-result preview, or an explicit "no search" line. The hosted demo runs
+in **citation mode**: retrieved-text claims carry inline superscript
+markers plus a source list, while memory-only answers stay unmarked (the
+CLI default remains citations-off; `--cite` opts in). Sample-query chips
 mirror the CLI's `--demo` set. No chat history, no streaming.
 
 **The API key stays server-side**: `api/ask.py` runs as a Vercel Python
