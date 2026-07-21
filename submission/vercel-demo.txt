@@ -5,3 +5,7 @@ Click any sample chip — each shows a different behavior class (direct
 answer, optional lookup, single-hop retrieval, disambiguation, multi-hop
 chain, false premise, unanswerable) with the full search trace and
 Wikipedia-linked citations.
+
+Note: multi-hop queries currently take up to ~30s (each hop is a
+sequential, rate-limit-throttled live Wikipedia search); optimizing
+latency is one of the planned next steps.

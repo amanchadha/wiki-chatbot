@@ -294,6 +294,10 @@ Priority-sorted (P0 = first):
   with the LLM judge using percent agreement and Cohen's kappa. Manually
   review disagreements to identify systematic judge errors and refine the
   rubric.
+- **[P1] Latency optimization:** Multi-hop queries currently take up to
+  ~30s because each hop is a sequential, rate-limit-throttled live
+  Wikipedia search; parallelizing independent hops, caching hot articles,
+  and tuning per-turn effort are the obvious levers.
 - **[P1] Automated prompt optimization:** Compare the manual loop-engineering
   approach with APO ([Pryzant et al., 2023](https://arxiv.org/abs/2305.03495))
   and AlphaEvolve-style prompt evolution
