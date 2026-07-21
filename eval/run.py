@@ -42,7 +42,13 @@ import lexical_metrics
 JUDGE_MODEL = "claude-sonnet-5"
 # judge-v2: faithfulness carve-out — a clearly-labeled unverified answer given
 # under a total search outage is no longer graded unfaithful. See README.
-JUDGE_VERSION = "judge-v2"
+# judge-v3 (cite mode only): adds citation_coverage + citation_support
+# rubrics on top of v2.
+# judge-v4: adds the unsupported_side_claims rubric (hallucinated side
+# details in otherwise-correct answers) to the base judge.
+# judge-v5 (cite mode): v4 + the citation rubrics.
+JUDGE_VERSION_DEFAULT = "judge-v4"
+JUDGE_VERSION_CITE = "judge-v5"
 WORKERS = 2  # lowered from 4: parallel load tripped Wikipedia rate limiting
 
 EVAL_DIR = Path(__file__).resolve().parent
@@ -155,10 +161,81 @@ unfaithful.
 it is about 2,228 m — please double-check" -> faithful.
 - not_searched: the assistant issued no searches.
 
+# Rubric 5 — unsupported_side_claims: hallucinated extras (searched cases \
+only)
+
+List every SPECIFIC factual side claim in the final answer that is \
+supported neither by the retrieved transcript nor by the expected answer \
+or notes. A side claim is a checkable specific — a name, date, number, \
+title, role — asserted beyond the key claim itself. Multi-hop answers that \
+narrate intermediate steps are the classic source.
+
+Exclude from the list:
+- the key claim itself (Rubric 4 owns it)
+- claims the answer clearly labels as unverified or speculative
+- stable common-knowledge framing (e.g. "PSG is a French football club")
+- everything, if the assistant did not search: output an empty list — an \
+unsearched answer is legitimately from memory and Rubrics 1 and 4 govern it
+
+Quote each unsupported side claim briefly (a short verbatim-ish fragment). \
+Output an empty list when there are none.
+  Example: the evidence names only the 2025 men's Ballon d'Or winner, but \
+the answer adds "The women's Ballon d'Or was won by Aitana Bonmatí" — no \
+retrieved text mentions her -> ["The women's Ballon d'Or was won by Aitana \
+Bonmatí"].
+  Example: the answer states the population and municipality, both present \
+in the retrieved extract, and nothing else -> [].
+
 # reason
 
 One or two sentences naming the decisive facts behind your grades, so a \
 human can audit the grade without re-reading the whole transcript."""
+
+CITATION_RUBRICS = """
+
+# Rubric 6 — citation_coverage: are retrieved-text claims cited? \
+(cite mode)
+
+The answer should carry an inline superscript marker on each atomic \
+factual claim drawn from retrieved text, plus a source list at the end.
+
+- complete: every retrieved-text-backed factual claim carries a marker \
+that resolves to a source-list entry.
+  Example: the answer states the village's population¹ and its \
+municipality¹, both facts appear in the retrieved Kobdilj text, both \
+marked, and the source list names Kobdilj -> complete.
+- partial: some retrieved-text-backed claims are marked, others are not.
+  Example: the population is marked¹ but the founding year — also taken \
+from the retrieved extract — carries no marker -> partial.
+- none: the answer makes retrieved-text-backed claims but carries no \
+citations at all.
+  Example: a searched case whose answer restates three facts from the \
+extract with no markers and no source list -> none.
+- not_applicable: the assistant did not search, or the answer makes no \
+factual claims to cite (e.g. a pure abstention). An unsearched answer \
+with NO citations is correct behavior and is not_applicable — but an \
+unsearched answer WITH citations is graded under Rubric 6 as invented.
+
+# Rubric 7 — citation_support: does each cited article actually back its \
+claim? (only when citations are present)
+
+- supported: every cited claim appears in the retrieved text of the \
+article its marker points to.
+  Example: "the village has 194 residents¹ ... ¹ Kobdilj — Wikipedia" and \
+the retrieved Kobdilj infobox shows population_total = 194 -> supported.
+- misattributed: every cited claim does appear somewhere in the retrieved \
+text, but at least one marker names the wrong article.
+  Example: the moon count came from the retrieved 'Moons of Saturn' text \
+but its marker points to 'Saturn', whose retrieved text lacks the figure \
+-> misattributed.
+- invented: at least one citation is attached to a claim that appears in \
+NO retrieved text — a memory-derived fact carrying a marker, a citation \
+in an answer that never searched, or a source list naming an article that \
+was never retrieved. This is the worst citation failure.
+  Example: no search result mentions PSG's founding year, but the answer \
+says "founded in 1970¹" with a marker -> invented.
+- no_citations: the answer carries no citations at all.
+"""
 
 JUDGE_SCHEMA = {
     "type": "json_schema",
@@ -181,6 +258,10 @@ JUDGE_SCHEMA = {
                 "type": "string",
                 "enum": ["faithful", "unfaithful", "not_searched"],
             },
+            "unsupported_side_claims": {
+                "type": "array",
+                "items": {"type": "string"},
+            },
             "reason": {"type": "string"},
         },
         "required": [
@@ -188,11 +269,25 @@ JUDGE_SCHEMA = {
             "evidence_sufficiency",
             "right_article",
             "faithfulness",
+            "unsupported_side_claims",
             "reason",
         ],
         "additionalProperties": False,
     },
 }
+
+JUDGE_SCHEMA_CITE = json.loads(json.dumps(JUDGE_SCHEMA))
+JUDGE_SCHEMA_CITE["schema"]["properties"]["citation_coverage"] = {
+    "type": "string",
+    "enum": ["complete", "partial", "none", "not_applicable"],
+}
+JUDGE_SCHEMA_CITE["schema"]["properties"]["citation_support"] = {
+    "type": "string",
+    "enum": ["supported", "misattributed", "invented", "no_citations"],
+}
+JUDGE_SCHEMA_CITE["schema"]["required"] += ["citation_coverage", "citation_support"]
+
+CITE_JUDGE_FIELDS = ("citation_coverage", "citation_support")
 
 
 def build_judge_prompt(case, result):
@@ -213,26 +308,26 @@ def build_judge_prompt(case, result):
     )
 
 
-def judge(client, case, result):
+def judge(client, case, result, cite=False):
     response = client.messages.create(
         model=JUDGE_MODEL,
         max_tokens=2000,
-        system=JUDGE_SYSTEM,
-        output_config={"format": JUDGE_SCHEMA},
+        system=JUDGE_SYSTEM + (CITATION_RUBRICS if cite else ""),
+        output_config={"format": JUDGE_SCHEMA_CITE if cite else JUDGE_SCHEMA},
         messages=[{"role": "user", "content": build_judge_prompt(case, result)}],
     )
     text = next(b.text for b in response.content if b.type == "text")
     return json.loads(text)
 
 
-def run_case(case):
+def run_case(case, cite=False):
     client = anthropic.Anthropic()
     try:
-        result = answer(case["question"], client=client)
+        result = answer(case["question"], client=client, cite=cite)
     except Exception as e:  # network/API failure: record, don't kill the run
         return {**case, "error": f"{type(e).__name__}: {e}"}
     try:
-        j = judge(client, case, result)
+        j = judge(client, case, result, cite=cite)
     except Exception as e:
         return {**case, "error": f"judge: {type(e).__name__}: {e}"}
     passed = bool(
@@ -251,7 +346,9 @@ def run_case(case):
         "num_turns": result["num_turns"],
         "usage": result["usage"],
         **{k: j[k] for k in
-           ("verdict", "evidence_sufficiency", "right_article", "faithfulness", "reason")},
+           ("verdict", "evidence_sufficiency", "right_article", "faithfulness",
+            "unsupported_side_claims", "reason")},
+        **({k: j[k] for k in CITE_JUDGE_FIELDS} if cite else {}),
         "passed": passed,
     }
 
@@ -320,6 +417,56 @@ def multihop_metrics(ok):
     }
 
 
+def citation_metrics(ok):
+    """Cite-mode only: coverage of retrieved-text claims and validity of
+    every citation. invented_citation_ids is the metric that must stay
+    empty — a citation on a memory-derived claim is the failure this mode
+    is designed to prevent."""
+    graded = [r for r in ok if r.get("citation_coverage")]
+    if not graded:
+        return {}
+    applicable = [r for r in graded if r["citation_coverage"] != "not_applicable"]
+    complete = sum(1 for r in applicable if r["citation_coverage"] == "complete")
+    return {
+        "citation_coverage_complete_rate": (
+            round(complete / len(applicable), 3) if applicable else None
+        ),
+        "partial_citation_ids": [
+            r["id"] for r in graded if r["citation_coverage"] == "partial"
+        ],
+        "uncited_answer_ids": [
+            r["id"] for r in graded if r["citation_coverage"] == "none"
+        ],
+        "misattributed_citation_ids": [
+            r["id"] for r in graded if r["citation_support"] == "misattributed"
+        ],
+        "invented_citation_ids": [
+            r["id"] for r in graded if r["citation_support"] == "invented"
+        ],
+    }
+
+
+def side_claim_metrics(ok):
+    """Hallucination coverage beyond the key claim: side details asserted
+    with no support in the retrieved evidence (judge-v4 rubric 5). Graded
+    over searched cases only — unsearched answers are legitimately from
+    memory and are governed by verdict/faithfulness."""
+    graded = [
+        r for r in ok
+        if r["searched"] and isinstance(r.get("unsupported_side_claims"), list)
+    ]
+    if not graded:
+        return {}
+    with_claims = [r["id"] for r in graded if r["unsupported_side_claims"]]
+    return {
+        "answers_with_unsupported_side_claims": f"{len(with_claims)}/{len(graded)}",
+        "unsupported_side_claim_ids": with_claims,
+        "unsupported_side_claims_total": sum(
+            len(r["unsupported_side_claims"]) for r in graded
+        ),
+    }
+
+
 def abstention_metrics(ok):
     unans = [r for r in ok if r["category"] == "unanswerable"]
     answerable = [r for r in ok if r["category"] != "unanswerable"]
@@ -336,8 +483,100 @@ def abstention_metrics(ok):
     }
 
 
+def rejudge(src_dir: str):
+    """Replay ONLY the judge over a completed run's saved agent transcripts.
+
+    Agent outputs (queries, tool results, answers, usage, lexical) are
+    frozen; every judge field is regraded under the current judge version.
+    Writes a new run dir '<timestamp>_<prompt_version>_rejudge' and appends
+    a history row with 'rejudged_from' set. Cases are judged against the
+    notes stored in the source run's case files (not the current
+    cases.jsonl), so historical grades stay tied to their era's case
+    definitions.
+    """
+    src = Path(src_dir)
+    orig_summary = json.loads((src / "summary.json").read_text())
+    cite = orig_summary.get("mode") == "cite"
+    olds = [
+        json.loads(p.read_text()) for p in sorted((src / "cases").glob("*.json"))
+    ]
+    client = anthropic.Anthropic()
+
+    def one(old):
+        if "error" in old:
+            return old
+        try:
+            j = judge(client, old, old, cite=cite)  # old carries both case + result fields
+        except Exception as e:
+            return {**old, "error": f"judge: {type(e).__name__}: {e}"}
+        passed = bool(
+            j["verdict"] == "correct"
+            or (
+                j["verdict"] == "honest_abstention"
+                and (old["category"] == "unanswerable" or old.get("abstention_ok", False))
+            )
+        )
+        judge_fields = (
+            "verdict", "evidence_sufficiency", "right_article", "faithfulness",
+            "unsupported_side_claims", "reason",
+        ) + (CITE_JUDGE_FIELDS if cite else ())
+        return {**old, **{k: j[k] for k in judge_fields}, "passed": passed}
+
+    with ThreadPoolExecutor(max_workers=WORKERS) as pool:
+        results = list(pool.map(one, olds))
+
+    ok = [r for r in results if "error" not in r]
+    errors = [r for r in results if "error" in r]
+
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    run_dir = RUNS_DIR / f"{timestamp}_{orig_summary['prompt_version']}_rejudge"
+    (run_dir / "cases").mkdir(parents=True)
+    for r in results:
+        (run_dir / "cases" / f"{r['id']}.json").write_text(json.dumps(r, indent=2))
+
+    by_cat = {}
+    for r in ok:
+        by_cat.setdefault(r["category"], []).append(r)
+
+    summary = {
+        "timestamp": timestamp,
+        "prompt_version": orig_summary["prompt_version"],
+        "mode": orig_summary.get("mode", "default"),
+        "rejudged_from": src.name,
+        "agent_model": orig_summary["agent_model"],
+        "judge_model": JUDGE_MODEL,
+        "judge_version": JUDGE_VERSION_CITE if cite else JUDGE_VERSION_DEFAULT,
+        "n_cases": len(results),
+        "n_errors": len(errors),
+        "pass_rate": round(sum(r["passed"] for r in ok) / len(ok), 3) if ok else None,
+        "pass_rate_by_category": {
+            cat: f"{sum(r['passed'] for r in rs)}/{len(rs)}"
+            for cat, rs in sorted(by_cat.items())
+        },
+        **search_metrics(results),
+        **retrieval_metrics(ok),
+        **tool_error_metrics(ok),
+        **multihop_metrics(ok),
+        **side_claim_metrics(ok),
+        **citation_metrics(ok),
+        **abstention_metrics(ok),
+        "failed_ids": [r["id"] for r in ok if not r["passed"]],
+        "error_ids": [r["id"] for r in errors],
+    }
+    (run_dir / "summary.json").write_text(json.dumps(summary, indent=2))
+    with (RUNS_DIR / "history.jsonl").open("a") as f:
+        f.write(json.dumps(summary) + "\n")
+    print(json.dumps(summary, indent=2))
+    print(f"\nRejudge artifacts: {run_dir}")
+
+
 def main():
-    only_ids = set(sys.argv[1:])
+    argv = sys.argv[1:]
+    if "--rejudge" in argv:
+        rejudge(argv[argv.index("--rejudge") + 1])
+        return
+    cite = "--cite" in argv
+    only_ids = {a for a in argv if not a.startswith("--")}
     cases = [
         json.loads(line)
         for line in (EVAL_DIR / "cases.jsonl").read_text().splitlines()
@@ -347,11 +586,11 @@ def main():
         cases = [c for c in cases if c["id"] in only_ids]
 
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-    run_dir = RUNS_DIR / f"{timestamp}_{PROMPT_VERSION}"
+    run_dir = RUNS_DIR / f"{timestamp}_{PROMPT_VERSION}{'_cite' if cite else ''}"
     (run_dir / "cases").mkdir(parents=True)
 
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
-        results = list(pool.map(run_case, cases))
+        results = list(pool.map(lambda c: run_case(c, cite=cite), cases))
 
     ok = [r for r in results if "error" not in r]
     errors = [r for r in results if "error" in r]
@@ -373,9 +612,10 @@ def main():
     summary = {
         "timestamp": timestamp,
         "prompt_version": PROMPT_VERSION,
+        "mode": "cite" if cite else "default",
         "agent_model": AGENT_MODEL,
         "judge_model": JUDGE_MODEL,
-        "judge_version": JUDGE_VERSION,
+        "judge_version": JUDGE_VERSION_CITE if cite else JUDGE_VERSION_DEFAULT,
         "n_cases": len(cases),
         "n_errors": len(errors),
         "pass_rate": round(sum(r["passed"] for r in ok) / len(ok), 3) if ok else None,
@@ -387,6 +627,8 @@ def main():
         **retrieval_metrics(ok),
         **tool_error_metrics(ok),
         **multihop_metrics(ok),
+        **side_claim_metrics(ok),
+        **citation_metrics(ok),
         **abstention_metrics(ok),
         "mean_searches_per_case": round(
             sum(len(r["queries"]) for r in ok) / len(ok), 2
@@ -424,6 +666,11 @@ def main():
                 f"verdict={r['verdict']}  evidence={r['evidence_sufficiency']}  "
                 f"article={r['right_article']}  faithful={r['faithfulness']}"
             )
+            if "citation_coverage" in r:
+                print(
+                    f"citations: coverage={r['citation_coverage']}  "
+                    f"support={r['citation_support']}"
+                )
             print(f"judge: {r['reason']}")
 
 
