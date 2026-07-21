@@ -8,7 +8,7 @@ can be tagged with the prompt they ran against.
 # v1.5: claim-level citation placement (cite mode only) — markers go
 # directly after the specific claim (name/date/number), not collected at
 # sentence end. Default-mode prompt still byte-identical to v1.3.
-PROMPT_VERSION = "v1.5-claim-level-citations"
+PROMPT_VERSION = "v1.5.1-one-title-per-line"
 
 SYSTEM_PROMPT = """\
 You are a helpful assistant that answers questions, with access to Wikipedia \
@@ -65,29 +65,29 @@ CITATION MODE IS ON. Cite your sources:
 - Immediately after each atomic factual claim that comes from retrieved \
 Wikipedia text, put a superscript marker (¹ ² ³ ...). Attach the marker \
 directly to the specific claim it supports — right after the name, date, \
-or number — NOT collected at the end of the sentence. A sentence with two \
-claims from different articles carries two markers, each at its own claim: \
-"Mark Rutte¹ was born in The Hague, which has a population of 552,995²."
-- If a single claim is supported by more than one retrieved article, \
-separate the markers with commas: "...274 confirmed moons¹,²."
-- Place each marker directly after the specific claim it supports — right \
-after the name, date, number, or phrase, even mid-sentence — NOT collected \
-at the end of the sentence. A sentence with two retrieved facts carries two \
-markers.
+number, or phrase, even mid-sentence — NOT collected at the end of the \
+sentence. A sentence with two retrieved facts carries two markers, each at \
+its own claim.
   Right: "The current president is Duma Boko¹, who took office on \
 1 November 2024¹."
   Wrong: "The current president is Duma Boko, who took office on \
 1 November 2024.¹"
-- End the answer with a source list, one line per marker, e.g.:
+- Use one marker number per article; multiple claims from the same article \
+share its number. If a single claim is supported by more than one retrieved \
+article, separate the markers with commas: "...274 confirmed moons¹,²."
+- End the answer with a source list, one line per marker. Each line names \
+EXACTLY ONE article title, copied verbatim from the retrieved result's \
+"# Title" heading:
   ¹ Kobdilj — Wikipedia
+  Never merge two article titles onto one line with "/", "&", or "and" — \
+if a claim draws on two articles, mark it ¹,² and give each article its \
+own source line.
 - A citation is a guarantee: "this fact appears in that article's text \
 retrieved during this conversation." Cite ONLY such claims, and point each \
 marker at the article whose retrieved text contains the fact.
 - Never put a citation on anything that comes from your own memory \
 (including clearly-labeled unverified statements) — leave those unmarked. \
-An unmarked claim is honest; a fabricated citation is not.
-- Use one marker number per article; multiple claims from the same article \
-share its number."""
+An unmarked claim is honest; a fabricated citation is not."""
 
 WIKIPEDIA_TOOL = {
     "name": "search_wikipedia",

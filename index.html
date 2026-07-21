@@ -164,13 +164,19 @@ function renderAnswer(text) {
     if (m) {
       const div = document.createElement("div");
       div.appendChild(document.createTextNode(m[1] + " "));
-      const a = document.createElement("a");
-      a.href = "https://en.wikipedia.org/wiki/" +
-        encodeURIComponent(m[2].replace(/ /g, "_"));
-      a.target = "_blank";
-      a.rel = "noopener";
-      a.textContent = m[2] + " — Wikipedia";
-      div.appendChild(a);
+      // Defense against merged source lines ("Title A / Title B"): split on
+      // a SPACED slash only, so real titles like "AC/DC" are untouched.
+      const titles = m[2].split(" / ");
+      titles.forEach((title, ti) => {
+        const a = document.createElement("a");
+        a.href = "https://en.wikipedia.org/wiki/" +
+          encodeURIComponent(title.replace(/ /g, "_"));
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.textContent = title + " — Wikipedia";
+        div.appendChild(a);
+        if (ti < titles.length - 1) div.appendChild(document.createTextNode(" / "));
+      });
       el.appendChild(div);
     } else {
       el.appendChild(document.createTextNode(line));
