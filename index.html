@@ -96,11 +96,13 @@
 </main>
 
 <script>
-// Keep in sync with DEMO_QUESTIONS in cli.py.
+// Keep in sync with DEMO_SECTIONS in cli.py — same questions, same
+// complexity order (simplest first).
 const SAMPLES = [
-  ["Who is the current president of Botswana?", "search · stale-memory trap"],
-  ["What is 17 * 24?", "no search · arithmetic"],
-  ["Who founded Mercury Records?", "search · ambiguous entity"],
+  ["What is 17 * 24?", "direct answer"],
+  ["Who painted the Mona Lisa?", "optional lookup"],
+  ["Who is the current president of Botswana?", "single-hop retrieval"],
+  ["Who founded Mercury Records?", "disambiguation"],
   ["What is the population of the city where the current Secretary General of NATO was born?", "multi-hop chain"],
   ["When did Einstein win his second Nobel Prize?", "false premise"],
   ["What did Napoleon eat for breakfast on his 30th birthday?", "unanswerable"],
