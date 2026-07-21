@@ -61,6 +61,19 @@ Case design choices that mattered:
   where the *anticipated failure* is a confident wrong answer — these
   separate "confident" from "correct", which a generic obscure-facts set
   cannot.
+- **"Optional" is a deliberate third value, not indecision.** Cases like
+  "Who painted the Mona Lisa?" sit exactly on the boundary of the prompt's
+  two decision lists: they are stable, pre-cutoff common knowledge (the
+  answer-directly list) *and* literally "named specifics about a particular
+  work" (the search-first list). Since either behavior is defensible, these
+  cases are excluded from search precision and recall in both directions —
+  punishing either choice would make the eval arbitrary — while answer
+  correctness (and, if the model does search, right-article and
+  faithfulness) is still graded. In practice the model answers all four
+  optional cases from memory, correctly, in every final run: the useful
+  thing these cases demonstrate is calibrated restraint — not burning a
+  search on a fact that pattern-matches the trigger list but is bedrock
+  knowledge — which is the live face of the suite's 1.0 search precision.
 - **Forced disambiguation** (Mercury Records vs the planet, Odessa TX vs
   Odesa UA, Java SD vs the language) to exercise wrong-article retrieval.
 - **Unanswerables** where honest abstention is the pass condition, graded
@@ -73,9 +86,12 @@ Case design choices that mattered:
 - **`notes` are authoritative over the judge's own knowledge** — this is
   what makes trap grading reliable — and the judge must flag (not act on)
   disagreement with an expected answer. Judge prompt changes are
-  version-tagged (judge-v1 → judge-v2; see README) for cross-run
-  comparability. A 10-case blind human spot-check, selected before any
-  verdicts existed, matched the judge 10/10.
+  version-tagged (judge-v1 → judge-v5; see the README for the numbering,
+  which spans both the default and citation grading modes) for cross-run
+  comparability, and a `--rejudge` mode replays a newer judge over a
+  finished run's frozen transcripts — grading improvements never require
+  re-running the agent. A 10-case blind human spot-check, selected before
+  any verdicts existed, matched the judge 10/10.
 - **Lexical metrics were run as a falsifiable experiment, not assumed
   useful.** BLEU/ROUGE were dropped on evidence: the baseline's one
   incorrect answer scored *above* the correct-group mean on ROUGE-1
@@ -96,9 +112,11 @@ Case design choices that mattered:
 | 6 | v1.2 + 8 multi-hop cases (baseline) | 0.975 | 0.955 / 1.0 | Chain collapse into memory (mh-04) and infobox-blind retrieval (mh-06); single-hop unregressed |
 | 7 | v1.3 chain-verify + infobox | 0.975 | 0.955 / 1.0 | Multi-hop 8/8, zero unfaithful; one miss (r09) traced to Wikipedia's own article contradicting itself (prose 1906 vs infobox 1907) |
 | 8 | v1.3 confirmation (identical config) | **1.0** (40/40) | 0.955 / 1.0 | Run-to-run spread ≈ 0 on all metrics |
+| 9–10 | judge-v4 re-judge of runs 7–8 (frozen transcripts, no agent re-run) | unchanged | unchanged | New side-claims hallucination rubric: 1 unsupported side detail per run (~5% of searched answers); every judge-v2-era grade reproduced exactly |
+| 11 | v1.4 `--cite` baseline (+ judge-v5 re-judge) | **1.0** (40/40) | 0.955 / 1.0 | Citation coverage 1.0, **zero invented/misattributed citations**; default-mode metrics identical (cite instructions append only under the flag); side claims dropped to 0/21 — requiring a marker per claim appears to suppress memory embellishment |
 
-(A ninth partial run, aborted by an API-credit outage, is flagged invalid in
-`history.jsonl`.)
+(A separate partial run, aborted by an API-credit outage, is flagged invalid
+in `history.jsonl`.)
 
 **Transparency note on the final 40/40:** run 8's perfect score came after
 two *eval-side* calibrations made between runs 7 and 8 — (a) r09's grading
@@ -117,7 +135,12 @@ the ruler, not the system — and are saying so.
 every run of the project); disambiguation (right-article 1.0 once actually
 exercised); evidence grounding (zero faithfulness violations in the final
 config); honest abstention on unanswerables and dead-end chains; multi-hop
-chaining including memory-proof intermediates.
+chaining including memory-proof intermediates; citation mode (opt-in
+`--cite`): complete coverage with zero invented citations on its baseline,
+and — a design finding worth keeping — the citation requirement eliminated
+the residual unsupported side claims (0/21 vs ~1 per default-mode run),
+because a claim that needs a marker to justify itself doesn't get written
+from memory.
 
 **Known residual failures, consciously accepted:**
 
@@ -125,6 +148,13 @@ chaining including memory-proof intermediates.
   from memory (correctly) despite the "specific years" trigger — a ±1-case
   noise band we kept, because tightening the wording risks the precision
   that never dropped.
+- Unsupported side details on otherwise-grounded answers, measured at ~5%
+  of searched answers by the judge-v4 hallucination rubric — small memory
+  embellishments like a "(France/PSG)" affiliation or a "(12 August 1970)"
+  day-and-month where evidence gave only the year. True facts in both
+  observed instances, but unverified specifics of exactly the class that
+  eventually goes wrong. Tracked in every run; a one-line prompt remedy is
+  ready if the rate climbs on a larger case set.
 - Facts deep in very long articles can fall below the 6k-char extract
   cut; snippets and infoboxes cover the common cases (tables, infoboxes)
   but not all of them.
@@ -137,7 +167,11 @@ misleading — the v0 run "passed" 97% while silently skipping verification on
 two-thirds of the facts that needed it; (2) the model's confidence is not a
 usable search trigger, but fact-shape is; (3) a meaningful share of "prompt
 problems" were retrieval-layer problems (rate limits, stripped tables and
-infoboxes) that no prompt could fix.
+infoboxes) that no prompt could fix; (4) grade the grader — version-tagged
+judge changes plus judge-only replay over frozen transcripts let
+hallucination coverage be added retroactively, and measuring that residual
+(~5%) *before* prompting against it kept us from trading answer quality for
+a two-claim problem.
 
 ## 5. With more time
 
@@ -146,6 +180,24 @@ infoboxes) that no prompt could fix.
 - Recompute BERTScore offline and finish the semantic-metric verdict.
 - Query rewriting and >2-hop planning (deferred from v0 by design; the eval
   now exists to justify them the moment cases demand it).
-- Citations in answers (span-level attribution to the retrieved extract).
+- Decide whether citation mode becomes the default: its eval gate has now
+  been passed (coverage 1.0, zero invented citations, side claims
+  suppressed to zero), so the remaining question is product taste — the
+  ~10% token overhead and the visual weight of markers — plus validation on
+  a larger case set before flipping the default.
 - A second human grading pass on the full 40 cases to bound judge error, and
   an agent-model ablation (Sonnet/Haiku as agent) on the same suite.
+- Automated prompt optimization, using
+  APO ([Pryzant et al., 2023](https://arxiv.org/abs/2305.03495)) and
+  AlphaEvolve-style prompt evolution
+  ([Novikov et al., 2025](https://arxiv.org/abs/2506.13131)). I've used
+  AlphaEvolve to evolve an optimized prompt with its evolutionary approach,
+  and APO's textual-feedback loop is similarly good at refining prompts. We
+  should run a comparative analysis against our manual loop-engineering
+  method with the same eval suite.
+- Multilingual coverage — all our cases are English right now.
+- A failure-analysis dashboard: the per-case transcripts are already
+  structured, so slicing failures by category and prompt version is easy.
+- Domain-specific evals for specialized areas like healthcare, legal, and
+  finance, where the bar for faithfulness and for knowing when to say "I
+  don't know" should be higher.
