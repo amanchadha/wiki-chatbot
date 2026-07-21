@@ -284,15 +284,17 @@ Biggest lessons:
 
 ## 5. With more time
 
-- **Larger, repeated evals:** Expand beyond the 40-case suite and run each
-  configuration multiple times to measure variance and report confidence
-  intervals, rather than relying on a single saturated run.
-- **Human-judge inter-annotator agreement:** Have a human independently
+Priority-sorted (P0 = first):
+
+- **[P0] Larger, repeated evals:** Expand beyond the 40-case suite and run
+  each configuration multiple times to measure variance and report
+  confidence intervals, rather than relying on a single saturated run.
+- **[P0] Human-judge inter-annotator agreement:** Have a human independently
   grade a stratified 20–30% sample of the test suite, then measure agreement
   with the LLM judge using percent agreement and Cohen's kappa. Manually
   review disagreements to identify systematic judge errors and refine the
   rubric.
-- **Automated prompt optimization:** Compare the manual loop-engineering
+- **[P1] Automated prompt optimization:** Compare the manual loop-engineering
   approach with APO ([Pryzant et al., 2023](https://arxiv.org/abs/2305.03495))
   and AlphaEvolve-style prompt evolution
   ([Novikov et al., 2025](https://arxiv.org/abs/2506.13131)) using the same
@@ -300,12 +302,15 @@ Biggest lessons:
   approach to optimize prompts in my work at DeepMind, while APO's
   textual-feedback loop offers a complementary method for iterative
   refinement.
-- **Multilingual coverage:** Extend the currently English-only suite across
-  languages and test retrieval, disambiguation, grounding, and abstention
-  separately for each language.
-- **Failure-analysis dashboard:** Build a dashboard over the existing
+- **[P2] Failure-analysis dashboard:** Build a dashboard over the existing
   structured per-case transcripts to slice failures by category, pipeline
   stage, prompt version, model, and run.
-- **Specialized domain evals:** Add healthcare, legal, and finance cases,
-  where requirements for faithfulness, source quality, uncertainty
-  calibration, and appropriate abstention should be stricter.
+- **[P2] Multilingual coverage:** Extend the currently English-only suite
+  across languages and test retrieval, disambiguation, grounding, and
+  abstention separately for each language.
+- **[P3] Specialized domain evals:** Add healthcare, legal, and finance
+  cases, where requirements for faithfulness, source quality, uncertainty
+  calibration, and appropriate abstention should be stricter. IAA matters
+  most here: judge agreement should be re-measured against domain-expert
+  human graders (clinicians, lawyers, financial analysts) with per-domain
+  Cohen's kappa before trusting LLM-judge verdicts in these settings.
