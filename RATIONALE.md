@@ -294,10 +294,20 @@ Priority-sorted (P0 = first):
   with the LLM judge using percent agreement and Cohen's kappa. Manually
   review disagreements to identify systematic judge errors and refine the
   rubric.
-- **[P1] Latency optimization:** Multi-hop queries currently take up to
-  ~30s because each hop is a sequential, rate-limit-throttled live
-  Wikipedia search; parallelizing independent hops, caching hot articles,
-  and tuning per-turn effort are the obvious levers.
+- **[P1] Latency optimization:** Measure and reduce end-to-end and
+  per-tool-call latency, especially for interactive use cases. Multi-hop
+  queries require sequential searches and can take noticeably longer (up to
+  ~30s), as seen occasionally in the Vercel demo; each hop is a
+  rate-limit-throttled live Wikipedia round trip stacked on an agent turn.
+  Potential improvements include parallel retrieval where hops are
+  independent, caching at both layers (prompt/KV caching of the static
+  system-prompt and tool-definition prefix so each agent turn skips
+  re-processing it, plus memoizing hot Wikipedia responses server-side),
+  tighter extracts to cut per-turn input tokens, latency-aware search
+  limits (a per-question search budget with early stopping once evidence
+  suffices), relaxing the fixed 0.6s throttle in favor of adaptive backoff,
+  and streaming answers so perceived latency drops even when total time
+  does not.
 - **[P1] Automated prompt optimization:** Compare the manual loop-engineering
   approach with APO ([Pryzant et al., 2023](https://arxiv.org/abs/2305.03495))
   and AlphaEvolve-style prompt evolution
