@@ -194,6 +194,23 @@ Traditional lexical/semantic metrics findings:
 (A separate partial run, aborted by an API-credit outage, is flagged invalid
 in `history.jsonl`.)
 
+### Metric progression
+
+![Metric progression across eval runs](eval/plots/metrics_progression.png)
+
+All values are read from the checked-in run artifacts (regenerate with
+`python eval/make_plots.py`); runs 9-10 replay runs 7-8's frozen
+transcripts, so behavior metrics are plotted once and the side-claims
+series starts at run 9, where its rubric was introduced. Reading the
+trends: search recall triples (0.33 to 0.95) while precision never leaves
+1.0; evidence sufficiency, right-article rate, faithfulness, and
+side-claim groundedness all climb to or near ceiling; tool-call success is
+flat at 1.0 apart from the annotated run-3 Wikipedia outage. The two
+visible dips are real and annotated rather than smoothed away: run 3 is
+the 429 outage (infrastructure, later fixed with retries and throttling),
+and run 6 is the moment eight harder multi-hop cases entered the suite,
+resetting a saturated metric before the v1.3 fixes recovered it.
+
 **Transparency note on the final 40/40 score:** run 8's perfect score came
 after two eval-side calibrations made between runs 7 and 8 — (a) r09's
 grading notes now accept either 1906 or 1907 because the Wikipedia article
