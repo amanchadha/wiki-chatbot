@@ -409,19 +409,21 @@ grade 32 cases; runs 6-11 grade 40 (multi-hop added). Tool-error rates for
 runs 1-3 were computed retroactively from the saved tool results, since the
 `tool_error_rate` metric was added in run 4's harness.
 
-| Run | Config (n cases) | Judge | Pass | Recall | Prec. | Evid. suff. | Right art. | Tool err. | Unfaithful | Side claims | Prompt / tool / judge change in this iteration |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | v0 (32) | pre-rubric | 0.938 | 0.333 | 1.0 | - | - | 0.0 | - | - | Baseline: minimal "search when you're not certain" prompt |
-| 2 | v0 (32) | judge-v1 | 0.969 | 0.333 | 1.0 | 0.80 | 1.0 | 0.0 | 1 | - | Judge upgraded to rubric judge (4 fields, per-notch examples); prompt unchanged |
-| 3 | v1 (32) | judge-v1 | 0.969 | 0.933 | 1.0 | 0.80 | 0.80 | 0.517 | 1 | - | Prompt: fact-kind trigger lists replace confidence; evidence-discipline block. Run polluted by Wikipedia 429s |
-| 4 | v1.1 (32) | judge-v2 | 0.969 | 0.867 | 1.0 | 0.846 | 0.923 | 0.0 | 1 | - | Prompt: outage-fallback policy. Tool: 429/503 retries + throttle. Judge-v2: labeled-unverified carve-out |
-| 5 | v1.2 (32) | judge-v2 | **1.0** | 0.867 | 1.0 | **1.0** | **1.0** | 0.0 | 0 | - | Prompt: follow alternate titles before answering. Tool: search snippets (table-borne facts) |
-| 6 | v1.2 (40) | judge-v2 | 0.975 | 0.955 | 1.0 | 0.857 | 1.0 | 0.0 | 1 | - | No config change: 8 multi-hop cases added to the suite |
-| 7 | v1.3 (40) | judge-v2 | 0.975 | 0.955 | 1.0 | 0.955 | 1.0 | 0.0 | 0 | - | Prompt: per-hop chain verification. Tool: infobox extraction |
-| 8 | v1.3 (40) | judge-v2 | **1.0** | 0.955 | 1.0 | 0.952 | 1.0 | 0.0 | 0 | - | No config change: confirmation run (after the two disclosed eval-side calibrations) |
-| 9 | v1.3 replay (40) | judge-v4 | 0.975 | 0.955 | 1.0 | 0.955 | 1.0 | 0.0 | 0 | 1/22 | Judge-only replay of run 7's frozen transcripts; judge-v4 adds side-claims rubric |
-| 10 | v1.3 replay (40) | judge-v4 | **1.0** | 0.955 | 1.0 | 0.952 | 1.0 | 0.0 | 0 | 1/21 | Judge-only replay of run 8's frozen transcripts |
-| 11 | v1.4 cite (40) | judge-v5 | **1.0** | 0.955 | 1.0 | 0.952 | 1.0 | 0.0 | 0 | **0/21** | Cite mode: citation instructions appended (default prompt unchanged); judge-v5 = v4 + citation rubrics. Citation coverage 1.0, zero invented/misattributed |
+### Table A1: Metrics per run
+
+| Run | Config (n cases) | Judge | Pass | Recall | Prec. | Evid. suff. | Right art. | Tool err. | Unfaithful | Side claims |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | v0 (32) | pre-rubric | 0.938 | 0.333 | 1.0 | - | - | 0.0 | - | - |
+| 2 | v0 (32) | judge-v1 | 0.969 | 0.333 | 1.0 | 0.80 | 1.0 | 0.0 | 1 | - |
+| 3 | v1 (32) | judge-v1 | 0.969 | 0.933 | 1.0 | 0.80 | 0.80 | 0.517 | 1 | - |
+| 4 | v1.1 (32) | judge-v2 | 0.969 | 0.867 | 1.0 | 0.846 | 0.923 | 0.0 | 1 | - |
+| 5 | v1.2 (32) | judge-v2 | **1.0** | 0.867 | 1.0 | **1.0** | **1.0** | 0.0 | 0 | - |
+| 6 | v1.2 (40) | judge-v2 | 0.975 | 0.955 | 1.0 | 0.857 | 1.0 | 0.0 | 1 | - |
+| 7 | v1.3 (40) | judge-v2 | 0.975 | 0.955 | 1.0 | 0.955 | 1.0 | 0.0 | 0 | - |
+| 8 | v1.3 (40) | judge-v2 | **1.0** | 0.955 | 1.0 | 0.952 | 1.0 | 0.0 | 0 | - |
+| 9 | v1.3 replay (40) | judge-v4 | 0.975 | 0.955 | 1.0 | 0.955 | 1.0 | 0.0 | 0 | 1/22 |
+| 10 | v1.3 replay (40) | judge-v4 | **1.0** | 0.955 | 1.0 | 0.952 | 1.0 | 0.0 | 0 | 1/21 |
+| 11 | v1.4 cite (40) | judge-v5 | **1.0** | 0.955 | 1.0 | 0.952 | 1.0 | 0.0 | 0 | **0/21** |
 
 Column notes: Pass = verdict `correct` or appropriate `honest_abstention`;
 Recall/Prec. = search decision vs `expect_search` (optional cases
@@ -429,7 +431,26 @@ excluded); Evid. suff. and Right art. over searched cases (run 3's dips
 are the 429 outage; runs 7-11 include the by-design dead-end case mh-08,
 which caps sufficiency at 0.95); Unfaithful = count of searched answers
 whose key claim exceeded the evidence; Side claims = searched answers with
-unsupported side details (judge-v4+ only). Later prompt refinements
-(v1.5/v1.5.1: claim-level citation placement, one source title per line)
-shipped after run 11 and changed cite-mode output formatting only; they
-were verified on the live demo rather than by a full re-run.
+unsupported side details (judge-v4+ only). Run 11 additionally scored
+citation coverage 1.0 with zero invented or misattributed citations.
+
+### Table A2: Prompt / tool / judge change per run
+
+| Run | Prompt change | Tool change | Judge / suite change |
+|---|---|---|---|
+| 1 | v0 baseline: minimal "search when you're not certain" | - | Minimal pre-rubric judge |
+| 2 | - | - | Rubric judge (judge-v1): 4 fields, per-notch examples, authoritative case notes |
+| 3 | v1: fact-kind trigger lists replace confidence; evidence-discipline block | - | Run polluted by Wikipedia 429s (52% of tool calls) |
+| 4 | v1.1: outage-fallback policy | 429/503 retries + process-wide throttle | judge-v2: labeled-unverified-under-outage carve-out |
+| 5 | v1.2: follow alternate titles before answering | Search snippets included (covers table-borne facts) | - |
+| 6 | - | - | Suite: 8 multi-hop cases added (n=32 to 40) |
+| 7 | v1.3: per-hop chain verification | Infobox extraction from wikitext | - |
+| 8 | - | - | Confirmation run; the two disclosed eval-side calibrations applied |
+| 9 | - | - | judge-v4: side-claims hallucination rubric; replay of run 7's frozen transcripts |
+| 10 | - | - | judge-v4 replay of run 8's frozen transcripts |
+| 11 | v1.4: citation instructions appended in cite mode (default prompt unchanged) | - | judge-v5 = v4 + citation rubrics; cite-mode baseline + replay |
+
+Later prompt refinements (v1.5/v1.5.1: claim-level citation placement, one
+source title per line) shipped after run 11 and changed cite-mode output
+formatting only; they were verified on the live demo rather than by a full
+re-run.
