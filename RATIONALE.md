@@ -205,11 +205,59 @@ series starts at run 9, where its rubric was introduced. Reading the
 trends: search recall triples (0.33 to 0.95) while precision never leaves
 1.0; evidence sufficiency, right-article rate, faithfulness, and
 side-claim groundedness all climb to or near ceiling; tool-call success is
-flat at 1.0 apart from the annotated run-3 Wikipedia outage. The two
-visible dips are real and annotated rather than smoothed away: run 3 is
-the 429 outage (infrastructure, later fixed with retries and throttling),
-and run 6 is the moment eight harder multi-hop cases entered the suite,
-resetting a saturated metric before the v1.3 fixes recovered it.
+flat at 1.0 apart from the annotated run-3 Wikipedia outage.
+
+**Every dip in the plots, explained.** The dips are real and annotated
+rather than smoothed away:
+
+- **Run 3, tool-call success 1.0 to 0.48 (and sufficiency / right-article
+  to 0.8):** Wikipedia rate-limited 15 of 29 tool calls mid-run. This was
+  infrastructure, not model behavior; retries, backoff, and throttling in
+  v1.1 returned tool success to 1.0 for every subsequent run, and the
+  `tool_error_rate` metric was added so infra failures can never again
+  masquerade as retrieval-quality failures.
+- **Runs 4-5, recall 0.93 to 0.87:** the borderline stable-historical-year
+  cases (r08/r09) flickered between searching and answering correctly from
+  memory. This is the accepted noise band, roughly one case wide, kept in
+  preference to trigger wording aggressive enough to endanger the 1.0
+  precision streak.
+- **Run 6, sufficiency 1.0 to 0.86 and pass 1.0 to 0.975:** eight harder
+  multi-hop cases entered the suite, deliberately resetting saturated
+  metrics. The new failures (chain collapse into memory, infobox-blind
+  retrieval) were exactly what the category was designed to surface, and
+  the v1.3 fixes recovered both metrics on the same expanded suite.
+- **Run 7, pass 0.975:** the single miss (r09) traced to Wikipedia's own
+  article contradicting itself (prose 1906 vs infobox 1907); the model's
+  answer was faithful to retrieved evidence. Graded as a miss under the
+  then-current notes; the calibration is disclosed in the transparency
+  note above.
+
+**Metrics not yet at full performance, and why.** Not every line ends at
+1.0, deliberately:
+
+- **Search recall, 0.955:** the r08 noise band remains. The model
+  occasionally answers a stable, decades-old year from memory (correctly
+  in every observed run). Closing the last 4.5 points would require
+  trigger wording aggressive enough to risk spurious searches, trading a
+  cosmetic recall gain for a real precision loss.
+- **Evidence sufficiency, 0.952:** the one "insufficient" case in every
+  final run is mh-08, the deliberate dead-end chain whose correct outcome
+  is finding no evidence. Its abstention passes; the metric honestly
+  records that retrieval found nothing, because there is nothing to find.
+  Effective ceiling given the case design. The genuine (unmeasured
+  residual) limit is long-article truncation: facts deeper than the
+  6,000-character extract cut, which snippets and infobox extraction
+  mitigate but do not eliminate.
+- **Side-claim groundedness, 0.95 in default mode (runs 9-10):** roughly
+  one searched answer per run carries a small unverified embellishment.
+  Measured, tracked, and consciously left unfixed in default mode (the
+  prompt remedy risked degrading answer quality for a two-claim problem);
+  citation mode (run 11) drives it to 1.0.
+- **Recall and sufficiency share one more caveat:** both are measured on a
+  40-case suite that the prompt has been iterated against. The honest
+  expectation is that all near-ceiling numbers would drop on a larger
+  held-out set, which is why expanded, repeated evals are the P0 item in
+  section 5.
 
 **Transparency note on the final 40/40 score:** run 8's perfect score came
 after two eval-side calibrations made between runs 7 and 8 — (a) r09's
