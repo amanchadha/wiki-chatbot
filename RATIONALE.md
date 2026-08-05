@@ -347,42 +347,56 @@ Biggest lessons:
   prompt also prevented us from overcorrecting for a small residual issue
   and potentially reducing overall answer quality.
 
-## 5. With more time
+## 5. Priority-sorted Feature Roadmap
 
-Priority-sorted (P0 = first):
-
-- **[P0] Larger, repeated evals:** Expand beyond the 40-case suite and run
-  each configuration multiple times to measure variance and report
-  confidence intervals, rather than relying on a single saturated run.
-- **[P0] Human-judge inter-annotator agreement:** Have a human independently
-  grade a stratified 20–30% sample of the test suite, then measure agreement
-  with the LLM judge using percent agreement and Cohen's kappa. Manually
-  review disagreements to identify systematic judge errors and refine the
-  rubric.
+- **[P0] Larger dev set and held-out evaluation:** The current 40-case
+  suite, used as a dev set to optimize the loop, should be expanded for
+  broader failure coverage, and a separate held-out set of real-world
+  queries should be added to assess real-world performance. Run each
+  configuration multiple times to measure variance and confidence
+  intervals.
+- **[P0] Human-judge inter-annotator agreement:** While human-judge
+  correlation was established with 10 samples in this exercise, as the
+  dataset scales, it is important to have a human independently grade a
+  stratified 20-30% random sample, then measure agreement with the LLM
+  judge using percent agreement and a relevant per-domain inter-annotator
+  agreement metric such as Cohen's kappa. Review disagreements to identify
+  systematic judge errors and refine the rubric.
 - **[P1] Latency optimization:** Measure and reduce end-to-end and
-  per-tool-call latency, especially for interactive use. Multi-hop queries
-  run sequential searches and can take up to ~30s in the Vercel demo.
-  Levers: parallel retrieval for independent hops, prompt/KV caching of the
-  static prefix plus Wikipedia response caching, tighter extracts,
-  latency-aware search budgets with early stopping, adaptive backoff
-  instead of the fixed throttle, and streaming for perceived latency.
-- **[P1] Automated prompt optimization:** Compare the manual loop-engineering
-  approach with APO ([Pryzant et al., 2023](https://arxiv.org/abs/2305.03495))
-  and AlphaEvolve-style prompt evolution
-  ([Novikov et al., 2025](https://arxiv.org/abs/2506.13131)) using the same
-  eval suite and token budget. I have used AlphaEvolve's evolutionary
-  approach to optimize prompts in my work at DeepMind, while APO's
-  textual-feedback loop offers a complementary method for iterative
-  refinement.
-- **[P2] Failure-analysis dashboard:** Build a dashboard over the existing
-  structured per-case transcripts to slice failures by category, pipeline
-  stage, prompt version, model, and run.
-- **[P2] Multilingual coverage:** Extend the currently English-only suite
-  across languages and test retrieval, disambiguation, grounding, and
+  per-tool-call latency, especially for interactive use cases. Multi-hop
+  queries require sequential searches and can take ~30s, as seen
+  occasionally in the Vercel demo; potential improvements include parallel
+  retrieval for independent hops, prompt/KV caching of the static prefix
+  plus Wikipedia response caching, latency-aware search budgets with early
+  stopping, adaptive backoff instead of the fixed throttle, streaming for
+  perceived latency, etc.
+- **[P1] Explicit query rewriting and decomposition:** The current system
+  relies on instruction-driven reformulation (retry with a more specific
+  article title, follow surfaced alternate titles) and the model's
+  emergent chain decomposition, which the 40-case suite never falsified
+  (multi-hop 8/8). A larger held-out set with harder cases (>2-hop chains,
+  low-recall queries where the first search misses) will likely justify
+  dedicated machinery: an explicit query-rewrite step triggered on
+  retrieval misses, and a lightweight planner that decomposes multi-hop
+  questions into sub-queries up front, which also unlocks the parallel
+  retrieval called out under latency optimization.
+- **[P1] Automated prompt optimization:** Compare the loop-engineering
+  approach with Automatic Prompt Optimization
+  ([Pryzant et al., 2023](https://arxiv.org/abs/2305.03495)) and
+  AlphaEvolve-style prompt evolution
+  ([Novikov et al., 2025](https://arxiv.org/abs/2506.13131)) using the
+  same eval suite and token budget. I have used AlphaEvolve's evolutionary
+  approach at DeepMind, while APO provides a complementary
+  textual-feedback loop.
+- **[P2] Performance dashboard with failure-analysis:** Build a dashboard
+  over the structured transcripts to analyze performance and bucketize
+  failures by category, pipeline stage, prompt version, model, etc.
+- **[P2] Multilingual coverage:** Extend the English-only suite across
+  languages and evaluate retrieval, disambiguation, grounding, and
   abstention separately for each language.
 - **[P3] Specialized domain evals:** Add healthcare, legal, and finance
-  cases, where requirements for faithfulness, source quality, uncertainty
-  calibration, and appropriate abstention should be stricter. IAA matters
-  most here: judge agreement should be re-measured against domain-expert
-  human graders (clinicians, lawyers, financial analysts) with per-domain
-  Cohen's kappa before trusting LLM-judge verdicts in these settings.
+  cases with stricter standards for source quality, faithfulness,
+  uncertainty, and abstention. Re-measure judge agreement against domain
+  experts (with at least a stratified 20-30% randomly sampled data
+  slice), such as clinicians, lawyers, and financial analysts, using a
+  relevant per-domain inter-annotator agreement metric.
